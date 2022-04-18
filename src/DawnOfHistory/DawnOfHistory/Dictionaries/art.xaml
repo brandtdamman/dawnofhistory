@@ -1,0 +1,1247 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:doh="clr-namespace:DawnOfHistory">
+    
+    <!--
+        TODO:
+        -   Clean up file.
+        -   Reorganize which brush comes first in the dictionary.
+    -->
+
+    <Style x:Key="rbtColorSquare" 
+           TargetType="{x:Type RadioButton}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Grid>
+                        <Border Height="24" Width="24" CornerRadius="6"
+                            Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" >
+                            <Border Margin="7" Background="White"
+                                Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        </Border>
+
+                        <Border Height="24" Width="24" CornerRadius="6">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.2,0" EndPoint="1,1">
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                    <GradientStop Color="White" Offset="-1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <LinearGradientBrush  x:Key="brsSky" MappingMode="Absolute" StartPoint="60,-58.605465" EndPoint="51.119377,33.395679">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF063EDD" Offset="0"/>
+                <GradientStop Color="#FFABBFFF" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <LinearGradientBrush  x:Key="brsHill2" MappingMode="Absolute" StartPoint="59.123955,115.78474" EndPoint="82.155739,218.79504">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF06DD06" Offset="0"/>
+                <GradientStop Color="#FF006C00" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <LinearGradientBrush  x:Key="brsHill1" MappingMode="Absolute" StartPoint="35.007153,34.502171" EndPoint="50,208.07646">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF06DD06" Offset="0"/>
+                <GradientStop Color="#FF006C00" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+
+
+    <DrawingBrush x:Key="brsHexWool" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsSky}"
+                                     Geometry="M 180.10836 178.84964 L 59.999999 248.19424 L -60.108365 178.84964 L -60.108365 40.160446 L 60.000001 -29.184151 L 180.10837 40.160447 L 180.10836 178.84964 z"/>
+                </DrawingGroup>
+
+                <DrawingGroup Transform="1,0,0,1,-68.6,-32.8">
+                    <GeometryDrawing Brush="{StaticResource brsHill1}"
+                                     Geometry="M 63.25 41.40625 L 8.46875 73.03125 L 8.46875 211.71875 L 128.5625 281.0625 L 248.6875 211.71875 L 248.6875 85.0625 C 210.49012 83.588809 172.59292 77.868206 133.09375 62.6875 C 110.94807 54.176257 87.093224 46.64941 63.25 41.40625 z "/>
+                </DrawingGroup>
+
+                <DrawingGroup Transform="1,0,0,1,-68.6,-32.8">
+                    <GeometryDrawing Brush="{StaticResource brsHill2}"
+                                     Geometry="M 230.78125 126.625 C 186.48024 126.44768 149.5769 132.76792 125.0625 137.71875 C 99.547244 142.8717 52.391866 132.09345 8.46875 131.96875 L 8.46875 211.71875 L 128.5625 281.0625 L 248.6875 211.71875 L 248.6875 127.09375 C 242.59732 126.82697 236.62554 126.64839 230.78125 126.625 z "/>
+                </DrawingGroup>
+
+                <DrawingGroup>
+                    <DrawingGroup.Transform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX=".9" ScaleY=".9" />
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="180" Y="300"/>
+                        </TransformGroup>
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="#FF000000">
+                        <GeometryDrawing.Geometry>
+                            <GeometryGroup>
+                                <EllipseGeometry Center="128,170" RadiusX="5" RadiusY="5" />
+                            </GeometryGroup>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF000000"
+                                     Geometry="M 131.35843 158.64475 L 130.68852 165.23221 C 130.68852 165.23221 135.32207 167.5769 135.09877 165.67882 C 134.87547 163.78073 132.86573 157.86318 132.86573 157.86318 L 131.35843 158.64475 z "/>
+                    <GeometryDrawing Brush="#FF000000"
+                                     Geometry="M 149.58951 159.27884 L 150.25942 165.8663 C 150.25942 165.8663 145.62587 168.21099 145.84917 166.31291 C 146.07247 164.41482 148.08221 158.49727 148.08221 158.49727 L 149.58951 159.27884 z "/>
+                    <GeometryDrawing Brush="#FFFFFFFF"
+                                     Geometry="M 136.68311 162.98138 C 135.70782 162.98138 134.78358 163.24413 133.99561 163.70013 C 133.70492 163.65124 133.39388 163.60638 133.08936 163.60638 C 130.13222 163.60638 127.74562 166.02424 127.74561 168.98138 C 127.74561 169.42798 127.79873 169.84779 127.90186 170.26263 C 127.75092 170.7574 127.65186 171.28119 127.65186 171.82513 C 127.65186 174.53185 129.66861 176.74642 132.27686 177.10638 C 133.20874 178.68673 134.9044 179.73138 136.87061 179.73138 C 137.65981 179.73138 138.41455 179.56948 139.08936 179.26263 C 139.76417 179.56948 140.51891 179.73138 141.30811 179.73138 C 142.27225 179.73138 143.15129 179.49025 143.93311 179.04388 C 144.60115 179.34335 145.31028 179.51263 146.08936 179.51263 C 149.0465 179.51263 151.46437 177.12602 151.46436 174.16888 C 151.46436 173.42959 151.29806 172.71598 151.02686 172.07513 C 151.63467 171.2063 152.02686 170.18391 152.02686 169.04388 C 152.02686 166.08674 149.60902 163.66888 146.65186 163.66888 C 145.9265 163.66888 145.22048 163.81352 144.58936 164.07513 C 143.773 163.5717 142.83697 163.29388 141.80811 163.29388 C 140.99395 163.29388 140.2181 163.4685 139.52686 163.79388 C 138.70378 163.27843 137.72522 162.98138 136.68311 162.98138 z "/>
+                </DrawingGroup>
+
+                <DrawingGroup>
+                    <DrawingGroup.Transform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-.8" ScaleY=".8" />
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="-140" Y="260"/>
+                        </TransformGroup>
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="#FF000000">
+                        <GeometryDrawing.Geometry>
+                            <GeometryGroup>
+                                <EllipseGeometry Center="128,170" RadiusX="5" RadiusY="5" />
+                            </GeometryGroup>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF000000"
+                                     Geometry="M 131.35843 158.64475 L 130.68852 165.23221 C 130.68852 165.23221 135.32207 167.5769 135.09877 165.67882 C 134.87547 163.78073 132.86573 157.86318 132.86573 157.86318 L 131.35843 158.64475 z "/>
+                    <GeometryDrawing Brush="#FF000000"
+                                     Geometry="M 149.58951 159.27884 L 150.25942 165.8663 C 150.25942 165.8663 145.62587 168.21099 145.84917 166.31291 C 146.07247 164.41482 148.08221 158.49727 148.08221 158.49727 L 149.58951 159.27884 z "/>
+                    <GeometryDrawing Brush="#FFFFFFFF"
+                                     Geometry="M 136.68311 162.98138 C 135.70782 162.98138 134.78358 163.24413 133.99561 163.70013 C 133.70492 163.65124 133.39388 163.60638 133.08936 163.60638 C 130.13222 163.60638 127.74562 166.02424 127.74561 168.98138 C 127.74561 169.42798 127.79873 169.84779 127.90186 170.26263 C 127.75092 170.7574 127.65186 171.28119 127.65186 171.82513 C 127.65186 174.53185 129.66861 176.74642 132.27686 177.10638 C 133.20874 178.68673 134.9044 179.73138 136.87061 179.73138 C 137.65981 179.73138 138.41455 179.56948 139.08936 179.26263 C 139.76417 179.56948 140.51891 179.73138 141.30811 179.73138 C 142.27225 179.73138 143.15129 179.49025 143.93311 179.04388 C 144.60115 179.34335 145.31028 179.51263 146.08936 179.51263 C 149.0465 179.51263 151.46437 177.12602 151.46436 174.16888 C 151.46436 173.42959 151.29806 172.71598 151.02686 172.07513 C 151.63467 171.2063 152.02686 170.18391 152.02686 169.04388 C 152.02686 166.08674 149.60902 163.66888 146.65186 163.66888 C 145.9265 163.66888 145.22048 163.81352 144.58936 164.07513 C 143.773 163.5717 142.83697 163.29388 141.80811 163.29388 C 140.99395 163.29388 140.2181 163.4685 139.52686 163.79388 C 138.70378 163.27843 137.72522 162.98138 136.68311 162.98138 z "/>
+                </DrawingGroup>
+
+                <DrawingGroup>
+                    <DrawingGroup.Transform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX=".7" ScaleY=".7" />
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="250" Y="220"/>
+                        </TransformGroup>
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="#FF000000">
+                        <GeometryDrawing.Geometry>
+                            <GeometryGroup>
+                                <EllipseGeometry Center="128,170" RadiusX="5" RadiusY="5" />
+                            </GeometryGroup>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF000000"
+                                     Geometry="M 131.35843 158.64475 L 130.68852 165.23221 C 130.68852 165.23221 135.32207 167.5769 135.09877 165.67882 C 134.87547 163.78073 132.86573 157.86318 132.86573 157.86318 L 131.35843 158.64475 z "/>
+                    <GeometryDrawing Brush="#FF000000"
+                                     Geometry="M 149.58951 159.27884 L 150.25942 165.8663 C 150.25942 165.8663 145.62587 168.21099 145.84917 166.31291 C 146.07247 164.41482 148.08221 158.49727 148.08221 158.49727 L 149.58951 159.27884 z "/>
+                    <GeometryDrawing Brush="#FFFFFFFF"
+                                     Geometry="M 136.68311 162.98138 C 135.70782 162.98138 134.78358 163.24413 133.99561 163.70013 C 133.70492 163.65124 133.39388 163.60638 133.08936 163.60638 C 130.13222 163.60638 127.74562 166.02424 127.74561 168.98138 C 127.74561 169.42798 127.79873 169.84779 127.90186 170.26263 C 127.75092 170.7574 127.65186 171.28119 127.65186 171.82513 C 127.65186 174.53185 129.66861 176.74642 132.27686 177.10638 C 133.20874 178.68673 134.9044 179.73138 136.87061 179.73138 C 137.65981 179.73138 138.41455 179.56948 139.08936 179.26263 C 139.76417 179.56948 140.51891 179.73138 141.30811 179.73138 C 142.27225 179.73138 143.15129 179.49025 143.93311 179.04388 C 144.60115 179.34335 145.31028 179.51263 146.08936 179.51263 C 149.0465 179.51263 151.46437 177.12602 151.46436 174.16888 C 151.46436 173.42959 151.29806 172.71598 151.02686 172.07513 C 151.63467 171.2063 152.02686 170.18391 152.02686 169.04388 C 152.02686 166.08674 149.60902 163.66888 146.65186 163.66888 C 145.9265 163.66888 145.22048 163.81352 144.58936 164.07513 C 143.773 163.5717 142.83697 163.29388 141.80811 163.29388 C 140.99395 163.29388 140.2181 163.4685 139.52686 163.79388 C 138.70378 163.27843 137.72522 162.98138 136.68311 162.98138 z "/>
+                </DrawingGroup>
+
+                <DrawingGroup>
+                    <DrawingGroup.Transform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX=".6" ScaleY=".6" />
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="70" Y="150"/>
+                        </TransformGroup>
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="#FF000000">
+                        <GeometryDrawing.Geometry>
+                            <GeometryGroup>
+                                <EllipseGeometry Center="128,170" RadiusX="5" RadiusY="5" />
+                            </GeometryGroup>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF000000"
+                                     Geometry="M 131.35843 158.64475 L 130.68852 165.23221 C 130.68852 165.23221 135.32207 167.5769 135.09877 165.67882 C 134.87547 163.78073 132.86573 157.86318 132.86573 157.86318 L 131.35843 158.64475 z "/>
+                    <GeometryDrawing Brush="#FF000000"
+                                     Geometry="M 149.58951 159.27884 L 150.25942 165.8663 C 150.25942 165.8663 145.62587 168.21099 145.84917 166.31291 C 146.07247 164.41482 148.08221 158.49727 148.08221 158.49727 L 149.58951 159.27884 z "/>
+                    <GeometryDrawing Brush="#FFFFFFFF"
+                                     Geometry="M 136.68311 162.98138 C 135.70782 162.98138 134.78358 163.24413 133.99561 163.70013 C 133.70492 163.65124 133.39388 163.60638 133.08936 163.60638 C 130.13222 163.60638 127.74562 166.02424 127.74561 168.98138 C 127.74561 169.42798 127.79873 169.84779 127.90186 170.26263 C 127.75092 170.7574 127.65186 171.28119 127.65186 171.82513 C 127.65186 174.53185 129.66861 176.74642 132.27686 177.10638 C 133.20874 178.68673 134.9044 179.73138 136.87061 179.73138 C 137.65981 179.73138 138.41455 179.56948 139.08936 179.26263 C 139.76417 179.56948 140.51891 179.73138 141.30811 179.73138 C 142.27225 179.73138 143.15129 179.49025 143.93311 179.04388 C 144.60115 179.34335 145.31028 179.51263 146.08936 179.51263 C 149.0465 179.51263 151.46437 177.12602 151.46436 174.16888 C 151.46436 173.42959 151.29806 172.71598 151.02686 172.07513 C 151.63467 171.2063 152.02686 170.18391 152.02686 169.04388 C 152.02686 166.08674 149.60902 163.66888 146.65186 163.66888 C 145.9265 163.66888 145.22048 163.81352 144.58936 164.07513 C 143.773 163.5717 142.83697 163.29388 141.80811 163.29388 C 140.99395 163.29388 140.2181 163.4685 139.52686 163.79388 C 138.70378 163.27843 137.72522 162.98138 136.68311 162.98138 z "/>
+                </DrawingGroup>
+
+
+                <DrawingGroup>
+                    <DrawingGroup.Transform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX=".6" ScaleY=".6" />
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="80" Y="165"/>
+                        </TransformGroup>
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="#FF000000">
+                        <GeometryDrawing.Geometry>
+                            <GeometryGroup>
+                                <EllipseGeometry Center="128,170" RadiusX="5" RadiusY="5" />
+                            </GeometryGroup>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF000000"
+                                     Geometry="M 131.35843 158.64475 L 130.68852 165.23221 C 130.68852 165.23221 135.32207 167.5769 135.09877 165.67882 C 134.87547 163.78073 132.86573 157.86318 132.86573 157.86318 L 131.35843 158.64475 z "/>
+                    <GeometryDrawing Brush="#FF000000"
+                                     Geometry="M 149.58951 159.27884 L 150.25942 165.8663 C 150.25942 165.8663 145.62587 168.21099 145.84917 166.31291 C 146.07247 164.41482 148.08221 158.49727 148.08221 158.49727 L 149.58951 159.27884 z "/>
+                    <GeometryDrawing Brush="#FFFFFFFF"
+                                     Geometry="M 136.68311 162.98138 C 135.70782 162.98138 134.78358 163.24413 133.99561 163.70013 C 133.70492 163.65124 133.39388 163.60638 133.08936 163.60638 C 130.13222 163.60638 127.74562 166.02424 127.74561 168.98138 C 127.74561 169.42798 127.79873 169.84779 127.90186 170.26263 C 127.75092 170.7574 127.65186 171.28119 127.65186 171.82513 C 127.65186 174.53185 129.66861 176.74642 132.27686 177.10638 C 133.20874 178.68673 134.9044 179.73138 136.87061 179.73138 C 137.65981 179.73138 138.41455 179.56948 139.08936 179.26263 C 139.76417 179.56948 140.51891 179.73138 141.30811 179.73138 C 142.27225 179.73138 143.15129 179.49025 143.93311 179.04388 C 144.60115 179.34335 145.31028 179.51263 146.08936 179.51263 C 149.0465 179.51263 151.46437 177.12602 151.46436 174.16888 C 151.46436 173.42959 151.29806 172.71598 151.02686 172.07513 C 151.63467 171.2063 152.02686 170.18391 152.02686 169.04388 C 152.02686 166.08674 149.60902 163.66888 146.65186 163.66888 C 145.9265 163.66888 145.22048 163.81352 144.58936 164.07513 C 143.773 163.5717 142.83697 163.29388 141.80811 163.29388 C 140.99395 163.29388 140.2181 163.4685 139.52686 163.79388 C 138.70378 163.27843 137.72522 162.98138 136.68311 162.98138 z "/>
+                </DrawingGroup>
+
+                <DrawingGroup>
+                    <DrawingGroup.Transform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-.45" ScaleY=".45" />
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="-10" Y="110"/>
+                        </TransformGroup>
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="#FF000000">
+                        <GeometryDrawing.Geometry>
+                            <GeometryGroup>
+                                <EllipseGeometry Center="128,170" RadiusX="5" RadiusY="5" />
+                            </GeometryGroup>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF000000"
+                                     Geometry="M 131.35843 158.64475 L 130.68852 165.23221 C 130.68852 165.23221 135.32207 167.5769 135.09877 165.67882 C 134.87547 163.78073 132.86573 157.86318 132.86573 157.86318 L 131.35843 158.64475 z "/>
+                    <GeometryDrawing Brush="#FF000000"
+                                     Geometry="M 149.58951 159.27884 L 150.25942 165.8663 C 150.25942 165.8663 145.62587 168.21099 145.84917 166.31291 C 146.07247 164.41482 148.08221 158.49727 148.08221 158.49727 L 149.58951 159.27884 z "/>
+                    <GeometryDrawing Brush="#FFFFFFFF"
+                                     Geometry="M 136.68311 162.98138 C 135.70782 162.98138 134.78358 163.24413 133.99561 163.70013 C 133.70492 163.65124 133.39388 163.60638 133.08936 163.60638 C 130.13222 163.60638 127.74562 166.02424 127.74561 168.98138 C 127.74561 169.42798 127.79873 169.84779 127.90186 170.26263 C 127.75092 170.7574 127.65186 171.28119 127.65186 171.82513 C 127.65186 174.53185 129.66861 176.74642 132.27686 177.10638 C 133.20874 178.68673 134.9044 179.73138 136.87061 179.73138 C 137.65981 179.73138 138.41455 179.56948 139.08936 179.26263 C 139.76417 179.56948 140.51891 179.73138 141.30811 179.73138 C 142.27225 179.73138 143.15129 179.49025 143.93311 179.04388 C 144.60115 179.34335 145.31028 179.51263 146.08936 179.51263 C 149.0465 179.51263 151.46437 177.12602 151.46436 174.16888 C 151.46436 173.42959 151.29806 172.71598 151.02686 172.07513 C 151.63467 171.2063 152.02686 170.18391 152.02686 169.04388 C 152.02686 166.08674 149.60902 163.66888 146.65186 163.66888 C 145.9265 163.66888 145.22048 163.81352 144.58936 164.07513 C 143.773 163.5717 142.83697 163.29388 141.80811 163.29388 C 140.99395 163.29388 140.2181 163.4685 139.52686 163.79388 C 138.70378 163.27843 137.72522 162.98138 136.68311 162.98138 z "/>
+                </DrawingGroup>
+
+
+            </DrawingGroup>
+
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <LinearGradientBrush  x:Key="brsGrain1" StartPoint="0.5,0" EndPoint="0.5,0.5">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFEADA00" Offset="0"/>
+                <GradientStop Color="#FF9D7B00" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush  x:Key="brsGrain2" StartPoint="0.5,0" EndPoint="0.5,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFEADA00" Offset="0"/>
+                <GradientStop Color="#FF9D7B00" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <Pen x:Key="penGrainOutline" Brush="#FF855100" Thickness="1" />
+
+    <DrawingBrush x:Key="brsHexGrain" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsSky}" Geometry="M 180.10836 178.84964 L 59.999999 248.19424 L -60.108365 178.84964 L -60.108365 40.160446 L 60.000001 -29.184151 L 180.10837 40.160447 L 180.10836 178.84964 z"/>
+                </DrawingGroup>
+                <DrawingGroup  Transform="1,0,0,1,-68.6,-32.8">
+                    <GeometryDrawing Brush="{StaticResource brsGrain1}" Geometry="M 71.3125 85.6875 C 43.519197 85.7034 21.161032 88.490037 8.46875 90.9375 L 8.46875 211.71875 L 128.5625 281.0625 L 248.6875 211.71875 L 248.6875 95.5625 C 220.24356 95.924107 171.46708 95.101385 123.96875 89 C 105.15689 86.583527 87.33721 85.678332 71.3125 85.6875 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="1,0,0,1,-68.6,-32.8">
+                    <GeometryDrawing Brush="{StaticResource brsGrain2}" Geometry="M 230.78125 126.625 C 186.48024 126.44768 149.5769 132.76792 125.0625 137.71875 C 99.547244 142.8717 52.391866 132.09345 8.46875 131.96875 L 8.46875 211.71875 L 128.5625 281.0625 L 248.6875 211.71875 L 248.6875 127.09375 C 242.59732 126.82697 236.62554 126.64839 230.78125 126.625 z"/>
+                </DrawingGroup>
+
+                <DrawingGroup Transform="1,0,0,1,-68.6,-32.8">
+                    <DrawingGroup>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 82.526756 215.79454 C 81.29825 213.77726 79.948783 206.88376 83.156507 199.04741 C 85.450333 204.22269 86.419785 204.80218 89.845225 211.85902 C 93.270675 218.91585 83.755261 217.81183 82.526756 215.79454 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 82.526756 215.79454 C 81.29825 213.77726 79.948783 206.88376 83.156507 199.04741 C 85.450333 204.22269 86.419785 204.80218 89.845225 211.85902 C 93.270675 218.91585 83.755261 217.81183 82.526756 215.79454 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 92.481785 215.04015 C 92.931615 212.72146 91.798182 205.78917 86.064251 199.55861 C 85.71449 205.20863 85.00725 206.08923 84.251258 213.89699 C 83.495266 221.70475 92.031956 217.35884 92.481785 215.04015 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 83.562842 220.97443 C 81.940209 219.25812 79.181137 212.79833 80.681954 204.46494 C 84.005803 209.0472 85.07488 209.4115 89.898276 215.59757 C 94.721676 221.78365 85.185474 222.69075 83.562842 220.97443 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 96.220807 217.58085 C 96.716863 215.27161 95.722128 208.31806 90.11379 201.97421 C 89.651244 207.61613 88.926556 208.48242 88.014761 216.27352 C 87.102961 224.06462 95.724754 219.89009 96.220807 217.58085 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 84.419022 227.26696 C 82.581499 225.78299 78.983553 219.75007 79.356765 211.29084 C 83.263399 215.38758 84.371584 215.60568 89.978727 221.09135 C 95.585867 226.57703 86.25655 228.75093 84.419022 227.26696 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 95.338169 207.99439 L 93.322412 191.19846"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 97.013802 224.35357 C 98.102193 222.25738 98.97947 215.28803 95.245953 207.68812 C 93.309597 213.00748 92.381827 213.65159 89.444498 220.92516 C 86.507175 228.19873 95.925412 226.44978 97.013802 224.35357 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 85.929473 233.48193 C 84.09195 231.99796 80.494004 225.96503 80.867216 217.50581 C 84.773849 221.60255 85.882035 221.82065 91.489178 227.30632 C 97.096318 232.79199 87.767001 234.96589 85.929473 233.48193 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 98.524252 230.56854 C 99.612644 228.47234 100.48992 221.503 96.756404 213.90308 C 94.820047 219.22245 93.892278 219.86656 90.954949 227.14013 C 88.017625 234.41369 97.435862 232.66474 98.524252 230.56854 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 87.279076 239.28489 C 85.441554 237.80093 81.843607 231.768 82.21682 223.30878 C 86.123458 227.40552 87.231638 227.62362 92.838781 233.10929 C 98.445923 238.59496 89.116604 240.76886 87.279076 239.28489 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 99.873858 236.37151 C 100.96225 234.27531 101.83953 227.30597 98.106009 219.70605 C 96.169652 225.02542 95.241883 225.66953 92.304558 232.9431 C 89.367229 240.21666 98.785468 238.46771 99.873858 236.37151 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 96.84375 242 L 92.6875 243.6875 L 98.28125 263.5625 L 102.1875 265.8125 L 96.84375 242 z "/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 88.789527 245.49986 C 86.952004 244.0159 83.354058 237.98297 83.72727 229.52374 C 87.633909 233.62049 88.742089 233.83858 94.349232 239.32425 C 99.956374 244.80993 90.627055 246.98383 88.789527 245.49986 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 101.38431 242.58648 C 102.4727 240.49028 103.34998 233.52094 99.61646 225.92102 C 97.680103 231.24039 96.752334 231.8845 93.815007 239.15806 C 90.87768 246.43163 100.29592 244.68268 101.38431 242.58648 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 90.273153 202.55294 L 88.257395 185.75701"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 86.169035 199.90513 L 84.153282 183.10919"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 83.388834 199.77274 L 81.373076 182.9768"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 80.608629 204.53881 L 78.592871 187.74287"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 79.417106 211.42312 L 77.401349 194.62719"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 93.053359 206.25989 L 91.037601 189.46395"/>
+                    </DrawingGroup>
+                    <DrawingGroup>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 104.77371 219.64412 C 104.22335 217.34722 105.05387 210.37215 110.51108 203.89784 C 111.10652 209.52728 111.85143 210.37624 112.94665 218.14368 C 114.04188 225.91112 105.32407 221.94102 104.77371 219.64412 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 114.4801 221.98029 C 115.6196 219.91143 116.66765 212.96572 113.12176 205.27647 C 111.05545 210.54671 110.11215 211.16786 106.99721 218.36716 C 103.88227 225.56645 113.34059 224.04916 114.4801 221.98029 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 104.17065 224.89208 C 103.15283 222.76072 102.50866 215.76597 106.49377 208.29491 C 108.2515 213.67595 109.15725 214.35067 111.85016 221.71822 C 114.54308 229.08578 105.18846 227.02345 104.17065 224.89208 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 117.25932 225.54559 C 118.43992 223.49991 119.6265 216.57652 116.23491 208.81797 C 114.06374 214.04589 113.10822 214.64807 109.8501 221.78371 C 106.59198 228.91935 116.07872 227.59128 117.25932 225.54559 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 103.055 231.14382 C 101.76137 229.16767 100.18783 222.32184 103.13832 214.38506 C 105.59968 219.48279 106.58751 220.03036 110.24125 226.97174 C 113.89499 233.91313 104.34863 233.11997 103.055 231.14382 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 119.36036 216.15066 L 122.59477 199.54628"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 115.93621 232.23499 C 117.61523 230.5738 120.58838 224.2097 119.36655 215.83086 C 115.89161 220.29962 114.81097 220.62803 109.78377 226.64967 C 104.75659 232.6713 114.2572 233.89619 115.93621 232.23499 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 102.58587 237.52247 C 101.29224 235.54632 99.718696 228.70049 102.66919 220.76371 C 105.13055 225.86144 106.11838 226.40901 109.77212 233.35039 C 113.42586 240.29178 103.8795 239.49862 102.58587 237.52247 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 115.46708 238.61364 C 117.14609 236.95245 120.11925 230.58835 118.89742 222.20951 C 115.42247 226.67828 114.34183 227.00669 109.31464 233.02832 C 104.28745 239.04995 113.78807 240.27484 115.46708 238.61364 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 102.09005 243.45965 C 100.79642 241.4835 99.222873 234.63767 102.17336 226.70089 C 104.63473 231.79862 105.62256 232.34618 109.2763 239.28757 C 112.93004 246.22895 103.38368 245.4358 102.09005 243.45965 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 114.97126 244.55082 C 116.65027 242.88963 119.62343 236.52553 118.4016 228.14669 C 114.92665 232.61545 113.84601 232.94386 108.81882 238.96549 C 103.79163 244.98712 113.29225 246.21201 114.97126 244.55082 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 110.34375 248.96875 L 105.90625 249.3125 L 105.1875 267.5625 L 108.46875 269.46875 L 110.34375 248.96875 z "/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 101.62091 249.8383 C 100.32728 247.86215 98.753741 241.01632 101.70423 233.07954 C 104.1656 238.17727 105.15342 238.72483 108.80716 245.66622 C 112.46091 252.6076 102.91455 251.81445 101.62091 249.8383 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 114.50213 250.92947 C 116.18114 249.26828 119.15429 242.90418 117.93247 234.52534 C 114.45752 238.9941 113.37688 239.32251 108.34969 245.34414 C 103.3225 251.36577 112.82311 252.59066 114.50213 250.92947 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 116.20903 209.41769 L 119.44345 192.81331"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 113.11518 205.63842 L 116.3496 189.03405"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 110.50967 204.65946 L 113.74409 188.05508"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 106.40132 208.34272 L 109.63574 191.73834"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 103.15517 214.52948 L 106.38958 197.92511"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 117.71788 213.79882 L 120.95229 197.19445"/>
+                    </DrawingGroup>
+                    <DrawingGroup>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 158.80431 203.86282 C 156.75688 201.66941 153.3041 193.44096 155.27797 182.86683 C 159.46338 188.71473 160.81854 189.18614 166.89592 197.08355 C 172.97332 204.98095 160.85174 206.05623 158.80431 203.86282 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 170.99453 200.36246 C 170.95743 197.36219 167.76342 189.02989 159.02685 182.75448 C 160.04573 189.87329 159.39252 191.15078 160.46132 201.05842 C 161.53012 210.96606 171.03162 203.36275 170.99453 200.36246 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 161.42624 210.04013 C 158.96596 208.32256 153.8712 200.99642 153.59372 190.24321 C 158.9079 195.08831 160.33162 195.26638 167.92401 201.72077 C 175.51641 208.17516 163.88653 211.7577 161.42624 210.04013 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 176.29981 202.56096 C 176.32266 199.56055 173.29572 191.16611 164.68623 184.71743 C 165.56272 191.85518 164.88412 193.11937 165.75481 203.04638 C 166.6255 212.97339 176.27698 205.56138 176.29981 202.56096 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 164.1107 217.64789 C 161.44288 216.27466 155.41439 209.69543 153.70175 199.07585 C 159.61599 203.16698 161.05073 203.15311 169.43789 208.53449 C 177.82504 213.91587 166.77853 219.02111 164.1107 217.64789 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 172.73477 190.86226 L 165.90478 170.48636"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 179.02924 210.78236 C 179.84379 207.89454 179.14163 198.9987 172.54124 190.50498 C 171.50126 197.62074 170.51284 198.66079 168.73052 208.46523 C 166.94821 218.26966 178.2147 213.67019 179.02924 210.78236 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 167.58913 224.99079 C 164.9213 223.61756 158.89282 217.03833 157.18017 206.41876 C 163.09442 210.50988 164.52916 210.49602 172.91631 215.87739 C 181.30347 221.25877 170.25696 226.36401 167.58913 224.99079 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 182.50767 218.12526 C 183.32222 215.23744 182.62006 206.34161 176.01966 197.84788 C 174.97968 204.96364 173.99127 206.00369 172.20895 215.80813 C 170.42664 225.61256 181.69312 221.01309 182.50767 218.12526 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 170.76143 231.86254 C 168.09361 230.48932 162.06512 223.91009 160.35248 213.29051 C 166.26673 217.38164 167.70146 217.36777 176.08862 222.74915 C 184.47577 228.13053 173.42926 233.23577 170.76143 231.86254 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 185.67998 224.99702 C 186.49452 222.10919 185.79237 213.21336 179.19197 204.71964 C 178.15199 211.83539 177.16357 212.87544 175.38126 222.67988 C 173.59894 232.48432 184.86543 227.88485 185.67998 224.99702 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 183.34375 232.78125 L 178.625 235.9375 L 185.09375 248.4375 L 189.3125 246 L 183.34375 232.78125 z "/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 174.23986 239.20544 C 171.57204 237.83222 165.54355 231.25299 163.83091 220.63341 C 169.74516 224.72454 171.17989 224.71067 179.56705 230.09205 C 187.9542 235.47343 176.90769 240.57867 174.23986 239.20544 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 189.1584 232.33992 C 189.97295 229.45209 189.2708 220.55626 182.6704 212.06253 C 181.63042 219.17829 180.642 220.21834 178.85969 230.02278 C 177.07737 239.82722 188.34386 235.22775 189.1584 232.33992 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 165.03342 185.39639 L 158.20343 165.02048"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 159.24637 183.15859 L 152.41639 162.78269"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 155.75365 183.70936 L 148.92366 163.33346"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 153.52151 190.35396 L 146.69152 169.97806"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 153.81086 199.22489 L 146.98087 178.84899"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 169.44604 189.29247 L 162.61605 168.91656"/>
+                    </DrawingGroup>
+                    <DrawingGroup>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 190.2503 188.47354 C 188.97454 185.75775 188.21275 176.86683 193.33556 167.40821 C 195.525 174.25817 196.67017 175.12261 200.03156 184.50369 C 203.39297 193.88477 191.52606 191.18932 190.2503 188.47354 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 202.92654 188.88193 C 203.81171 186.01496 203.32808 177.10457 196.93811 168.45143 C 195.72382 175.53952 194.71018 176.555 192.68779 186.31275 C 190.6654 196.07049 202.04137 191.7489 202.92654 188.88193 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 190.85061 195.15735 C 189.03592 192.7678 186.43451 184.2319 189.46947 173.91214 C 193.04091 180.15396 194.34133 180.76024 199.58738 189.2327 C 204.83344 197.70516 192.6653 197.54691 190.85061 195.15735 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 207.30149 192.60205 C 208.24375 189.75334 207.93819 180.83507 201.72234 172.05601 C 200.36671 179.11844 199.33299 180.11347 197.1161 189.82887 C 194.89921 199.54428 206.35923 195.45077 207.30149 192.60205 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 191.07156 203.22181 C 188.95369 201.09633 185.23443 192.98485 186.86245 182.35197 C 191.23632 188.06028 192.60612 188.48726 198.93781 196.18228 C 205.26949 203.87731 193.18943 205.34729 191.07156 203.22181 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 207.49751 180.37378 L 207.24819 158.88509"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 207.37698 201.26436 C 209.03822 198.7657 211.09915 190.08345 207.42292 179.97435 C 204.24999 186.42788 202.99016 187.11453 198.28581 195.89934 C 193.58147 204.68414 205.71573 203.76302 207.37698 201.26436 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 192.12945 211.27777 C 190.01158 209.15229 186.29232 201.04081 187.92034 190.40793 C 192.29421 196.11624 193.66402 196.54322 199.9957 204.23824 C 206.32738 211.93327 194.24732 213.40325 192.12945 211.27777 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 208.43487 209.32032 C 210.09611 206.82166 212.15704 198.13942 208.48081 188.03031 C 205.30788 194.48385 204.04805 195.1705 199.3437 203.9553 C 194.63936 212.7401 206.77362 211.81898 208.43487 209.32032 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 193.04052 218.79139 C 190.92266 216.66591 187.2034 208.55443 188.83141 197.92155 C 193.20529 203.62986 194.57509 204.05684 200.90678 211.75186 C 207.23846 219.44689 195.15839 220.91687 193.04052 218.79139 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 209.34595 216.83394 C 211.00719 214.33528 213.06812 205.65304 209.39189 195.54393 C 206.21896 201.99747 204.95913 202.68412 200.25478 211.46892 C 195.55043 220.25372 207.6847 219.3326 209.34595 216.83394 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 204.71875 223.53125 L 199.28125 225.09375 L 201.59375 238.90625 L 206.15625 236.28125 L 204.71875 223.53125 z "/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 194.09842 226.84735 C 191.98055 224.72187 188.26129 216.61039 189.8893 205.97751 C 194.26319 211.68583 195.63298 212.1128 201.96467 219.80782 C 208.29635 227.50285 196.21629 228.97283 194.09842 226.84735 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 210.40384 224.8899 C 212.06508 222.39125 214.12601 213.709 210.44978 203.59989 C 207.27685 210.05343 206.01702 210.74008 201.31267 219.52488 C 196.60833 228.30968 208.74259 227.38856 210.40384 224.8899 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 201.84448 172.80874 L 201.59516 151.32004"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 197.02307 168.90341 L 196.77375 147.41471"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 193.52981 168.35605 L 193.28049 146.86736"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 189.36676 173.9954 L 189.11744 152.5067"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 186.92057 182.5273 L 186.67125 161.0386"/>
+                        <GeometryDrawing Brush="{StaticResource brsGrain2}" Pen="{StaticResource penGrainOutline}" Geometry="M 204.84899 177.87071 L 204.59967 156.38201"/>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <LinearGradientBrush x:Key="brsHillTop" StartPoint="0.5,.4" EndPoint="0.5,0">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF06BD42" Offset="0"/>
+                <GradientStop Color="#FF164400" Offset="1.2"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="brsHillBottom" StartPoint="0.5,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF06BD42" Offset="0.2"/>
+                <GradientStop Color="#FF164400" Offset="0.7"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="brsRavine" StartPoint="0.2,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFD16B50" Offset="0"/>
+                <GradientStop Color="#FF6A2100" Offset="0.5"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="brsShadow" StartPoint="0,0.5" EndPoint="2,0.5">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#00C85335" Offset="1"/>
+                <GradientStop Color="#FF5C1D00" Offset="0"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <DrawingBrush x:Key="brsHexBrick" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsSky}" Geometry="M 180.10836 178.84964 L 59.999999 248.19424 L -60.108365 178.84964 L -60.108365 40.160446 L 60.000001 -29.184151 L 180.10837 40.160447 L 180.10836 178.84964 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="1,0,0,1,-68.5,-32.7">
+                    <GeometryDrawing Brush="{StaticResource brsHillTop}" Geometry="M 205.84375 76.96875 C 180.67145 80.15943 130.20616 99.584482 130.20616 99.584482 C 115.12925 104.56173 99.946668 85.89602 81.096881 88.664078 C 59.217203 91.877071 34.493205 100.7787 8.46875 112.28125 L 8.46875 211.71875 L 128.5625 281.0625 L 248.6875 211.71875 L 248.6875 83.03125 C 248.6875 83.03125 221.11242 75.03339 205.84375 76.96875 z"/>
+                    <GeometryDrawing Brush="{StaticResource brsHillBottom}" Geometry="M 8.46875 136.34375 L 8.46875 211.71875 L 128.5625 281.0625 L 182.0625 250.1875 L 169.96875 239.9375 L 159.0625 210.3125 L 95.90625 198.59375 L 80.3125 171.3125 L 44.4375 161.96875 L 26.5 147.9375 L 8.46875 136.34375 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsRavine}" Geometry="M 8.46875 123.4375 L 8.46875 136.34375 L 26.5 147.9375 L 44.4375 161.96875 L 80.3125 171.3125 L 95.90625 198.59375 L 159.0625 210.3125 L 169.96875 239.9375 L 182.0625 250.1875 L 248.6875 211.71875 L 248.6875 161.40005 L 228.43593 153.38909 L 188.6984 157.28751 L 171.52812 141.70003 L 125.53125 152.59375 L 105.25 140.125 L 47.5625 144.03125 L 8.46875 123.4375 z"/>
+                    <GeometryDrawing Brush="{StaticResource brsShadow}" Geometry="M 104.5 140.1875 L 47.5625 144.03125 L 47.53125 144 C 46.840295 148.01879 45.53125 155.72817 45.53125 157.15625 C 45.53125 157.77711 45.53125 159.97707 45.53125 162.25 L 80.3125 171.3125 L 91.4375 190.78125 L 92.15625 189.84375 L 99.125 176.625 L 102.8125 165.59375 L 104.65625 149.09375 L 104.5 140.1875 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsShadow}" Geometry="M 171.34375 141.71875 L 125.53125 152.59375 L 124.84375 152.15625 L 126.6875 156.78125 L 125.5625 165.96875 L 120.8125 185.8125 L 113.09375 199.03125 L 111.15625 201.4375 L 149 208.4375 L 152.375 204.53125 L 163.03125 194.25 L 167.4375 178.09375 L 171.84375 153.125 L 171.34375 141.71875 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsShadow}" Geometry="M 228.4375 153.375 L 188.8125 157.28125 L 186.5 166 L 179.375 185.6875 L 169.6875 201.09375 L 161.40625 212.1875 L 160.1875 213.34375 L 169.96875 239.9375 L 182.0625 250.1875 L 189.65625 245.8125 L 190.21875 244.71875 L 200.1875 225.90625 L 211.3125 200.78125 L 223.59375 165.71875 L 228.53125 153.40625 L 228.4375 153.375 z "/>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <LinearGradientBrush x:Key="brsTreeTrunk"  StartPoint="0.5,0" EndPoint="0.75,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF583F00" Offset="1"/>
+                <GradientStop Color="#FFC29426" Offset="0"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <LinearGradientBrush  x:Key="brsForestHill1" StartPoint="0.5,0" EndPoint="0.5,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF00A100" Offset="0"/>
+                <GradientStop Color="#FF004900" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <LinearGradientBrush  x:Key="brsForestHill2"  StartPoint="0.5,0" EndPoint="0.5,0.5">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF00A100" Offset="0"/>
+                <GradientStop Color="#FF004900" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <DrawingBrush x:Key="brsHexLumber" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsSky}" Geometry="M 180.10836 178.84964 L 59.999999 248.19424 L -60.108365 178.84964 L -60.108365 40.160446 L 60.000001 -29.184151 L 180.10837 40.160447 L 180.10836 178.84964 z"/>
+                </DrawingGroup>
+                <DrawingGroup  Transform="1,0,0,1,-68.6,-32.8">
+                    <GeometryDrawing Brush="{StaticResource brsForestHill1}" Geometry="M 63.25 41.40625 L 8.46875 73.03125 L 8.46875 211.71875 L 128.5625 281.0625 L 248.6875 211.71875 L 248.6875 85.0625 C 210.49012 83.588809 189.82553 72.865189 150.32636 57.684483 C 128.18068 49.17324 87.093224 46.64941 63.25 41.40625 z"/>
+                    <GeometryDrawing Brush="{StaticResource brsForestHill2}" Geometry="M 184.64231 126.625 C 140.3413 126.44768 121.22647 115.53531 96.71207 120.48614 C 71.196814 125.63909 52.391866 132.09345 8.46875 131.96875 L 8.46875 211.71875 L 128.5625 281.0625 L 248.6875 211.71875 L 248.6875 127.09375 C 242.59732 126.82697 190.4866 126.64839 184.64231 126.625 z"/>
+                </DrawingGroup>
+                <DrawingGroup>
+                    <DrawingGroup Transform="1,0,0,1,-68.6,-32.8">
+                        <GeometryDrawing Brush="{StaticResource brsTreeTrunk}" Geometry="M 187.3083 156.22001 L 210.85887 178.64483 L 212.34367 169.736 L 196.06836 156.64454 L 187.3083 156.22001 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsTreeTrunk}" Geometry="M 210.85887 178.64483 L 213.33354 204.87637 L 209.37407 210.32065 L 244.0195 210.81559 L 229.17146 202.89663 L 227.19171 147.46394 L 212.83861 145.97914 L 210.85887 178.64483 z"/>
+                        <GeometryDrawing Brush="#FF3EB200" Geometry="M 232.65625 81.96875 C 227.95055 82.172461 223.1874 84.205394 220.15625 88.375 C 210.40423 84.77211 202.51422 90.664178 200.03125 100.15625 C 187.86692 97.001338 179.82747 118.92942 190.40625 123.90625 C 185.05899 125.99787 181.29632 130.50684 181.75 136.40625 C 162.70829 144.17491 173.68122 162.41507 192.1875 158.9375 C 197.67088 163.82059 205.11181 164.09757 211.375 160.6875 C 216.28136 164.97388 235.27161 165.47703 248.6875 161.625 L 248.6875 97.90625 C 248.01062 98.033831 247.38606 98.285852 246.875 98.65625 C 250.44812 87.872225 241.63986 81.579847 232.65625 81.96875 z "/>
+                        <GeometryDrawing Brush="{StaticResource brsTreeTrunk}" Geometry="M 248.6875 152.25 L 247 152.40625 L 227.1875 176.15625 C 225.07957 180.16459 224.48659 183.93896 227.6875 187.0625 L 248.6875 157.8125 L 248.6875 152.25 z "/>
+                        <GeometryDrawing Brush="#FF4EDE00" Geometry="M 234.625 100.78125 C 231.22132 100.9286 227.78621 102.39033 225.59375 105.40625 C 218.54001 102.80024 212.82721 107.07178 211.03125 113.9375 C 202.23266 111.65552 196.41075 127.52521 204.0625 131.125 C 200.19478 132.6379 197.4531 135.88914 197.78125 140.15625 C 184.00819 145.77541 191.95796 158.95287 205.34375 156.4375 C 209.30995 159.9695 214.68852 160.18529 219.21875 157.71875 C 223.08334 161.095 239.02527 161.21175 248.6875 157.5625 L 248.6875 112.4375 C 247.19824 112.08797 245.82773 112.17589 244.90625 112.84375 C 247.49073 105.04356 241.12294 100.49995 234.625 100.78125 z "/>
+                        <GeometryDrawing Brush="#FF19C101" Geometry="M 236.09375 119.5625 C 233.20656 119.50187 230.21237 120.40208 228.34375 122.40625 C 222.83287 120.81879 218.34063 123.41148 216.9375 127.59375 C 210.06343 126.20367 205.55317 135.86967 211.53125 138.0625 C 208.5095 138.98408 206.36862 140.96318 206.625 143.5625 C 195.86451 146.98542 202.04208 155.03224 212.5 153.5 C 215.59867 155.65152 219.83567 155.7525 223.375 154.25 C 226.72529 156.53213 241.69805 156.40732 248.6875 153.375 L 248.6875 127.40625 C 246.71055 126.5339 244.61949 126.26956 243.4375 126.9375 C 245.36052 122.41224 240.90573 119.66354 236.09375 119.5625 z "/>
+                    </DrawingGroup>
+                    <DrawingGroup  Transform="0.9,0,0,1,215,-25">
+                        <GeometryDrawing Brush="{StaticResource brsTreeTrunk}" Geometry="M -153.75004 152.20342 L -127.29899 177.39007 L -125.63132 167.38403 L -143.9111 152.68023 L -153.75004 152.20342 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsTreeTrunk}" Geometry="M -127.29899 177.39007 L -124.51954 206.85228 L -128.96666 212.96708 L -90.054309 213.52297 L -106.73103 204.62872 L -108.9546 142.36895 L -125.07543 140.70128 L -127.29899 177.39007 z"/>
+                        <GeometryDrawing Brush="#FF3EB200" Geometry="M -116.84677 76.009052 C -127.79984 71.962429 -136.68299 78.566691 -139.47177 89.227802 C -153.13425 85.684335 -162.13468 110.32553 -150.25302 115.9153 C -156.25885 118.26453 -160.51258 123.32058 -160.00302 129.94656 C -181.38989 138.672 -169.06977 159.16493 -148.28427 155.25906 C -142.12555 160.74356 -133.75633 161.05787 -126.72177 157.22781 C -116.97901 165.73947 -57.76516 160.99436 -71.190517 139.35281 C -56.977895 136.41397 -54.458903 113.82573 -69.031824 110.37923 C -59.860918 96.478493 -80.312009 82.812 -86.831737 87.537296 C -80.716417 69.080639 -106.94287 62.385389 -116.84677 76.009052 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsTreeTrunk}" Geometry="M -108.39871 186.84021 L -80.048274 147.37197 L -86.718964 147.92786 L -108.9546 174.61061 C -111.32215 179.11262 -111.99384 183.33198 -108.39871 186.84021 z"/>
+                        <GeometryDrawing Brush="#FF4EDE00" Geometry="M -110.75575 95.137064 C -118.67823 92.210098 -125.10351 96.987033 -127.12066 104.69833 C -137.00288 102.1353 -143.51299 119.95854 -134.91886 124.00168 C -139.26294 125.70091 -142.33971 129.358 -141.97114 134.15064 C -157.44049 140.46185 -148.52922 155.28461 -133.49484 152.45945 C -129.04017 156.42645 -122.98662 156.65379 -117.89845 153.88347 C -110.8514 160.04004 -68.021374 156.60786 -77.732081 140.95429 C -67.451937 138.82859 -65.629923 122.49027 -76.170675 119.99738 C -69.537259 109.94283 -84.329759 100.05771 -89.045549 103.47556 C -84.622269 90.125668 -103.59216 85.282921 -110.75575 95.137064 z"/>
+                        <GeometryDrawing Brush="#FF19C101" Geometry="M -107.67773 114.22169 C -113.86733 112.43872 -118.88721 115.3486 -120.46315 120.04596 C -128.18383 118.48468 -133.26999 129.34175 -126.55565 131.80464 C -129.94955 132.83973 -132.35334 135.06746 -132.06538 137.98691 C -144.15113 141.8314 -137.18902 150.86072 -125.44311 149.13977 C -121.9628 151.55627 -117.23335 151.69476 -113.25811 150.00721 C -107.75247 153.7575 -74.29067 151.66678 -81.877352 142.13137 C -73.84579 140.83649 -72.42231 130.88396 -80.657475 129.36541 C -75.474988 123.24065 -87.031921 117.21911 -90.716225 119.30111 C -87.260447 111.16898 -102.08104 108.21901 -107.67773 114.22169 z"/>
+                    </DrawingGroup>
+                    <DrawingGroup Transform="1,0,0,1,115,-35">
+                        <GeometryDrawing Brush="{StaticResource brsTreeTrunk}" Geometry="M -153.75004 152.20342 L -127.29899 177.39007 L -125.63132 167.38403 L -143.9111 152.68023 L -153.75004 152.20342 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsTreeTrunk}" Geometry="M -127.29899 177.39007 L -124.51954 206.85228 L -128.96666 212.96708 L -90.054309 213.52297 L -106.73103 204.62872 L -108.9546 142.36895 L -125.07543 140.70128 L -127.29899 177.39007 z"/>
+                        <GeometryDrawing Brush="#FF3EB200" Geometry="M -116.84677 76.009052 C -127.79984 71.962429 -136.68299 78.566691 -139.47177 89.227802 C -153.13425 85.684335 -162.13468 110.32553 -150.25302 115.9153 C -156.25885 118.26453 -160.51258 123.32058 -160.00302 129.94656 C -181.38989 138.672 -169.06977 159.16493 -148.28427 155.25906 C -142.12555 160.74356 -133.75633 161.05787 -126.72177 157.22781 C -116.97901 165.73947 -57.76516 160.99436 -71.190517 139.35281 C -56.977895 136.41397 -54.458903 113.82573 -69.031824 110.37923 C -59.860918 96.478493 -80.312009 82.812 -86.831737 87.537296 C -80.716417 69.080639 -106.94287 62.385389 -116.84677 76.009052 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsTreeTrunk}" Geometry="M -108.39871 186.84021 L -80.048274 147.37197 L -86.718964 147.92786 L -108.9546 174.61061 C -111.32215 179.11262 -111.99384 183.33198 -108.39871 186.84021 z"/>
+                        <GeometryDrawing Brush="#FF4EDE00" Geometry="M -110.75575 95.137064 C -118.67823 92.210098 -125.10351 96.987033 -127.12066 104.69833 C -137.00288 102.1353 -143.51299 119.95854 -134.91886 124.00168 C -139.26294 125.70091 -142.33971 129.358 -141.97114 134.15064 C -157.44049 140.46185 -148.52922 155.28461 -133.49484 152.45945 C -129.04017 156.42645 -122.98662 156.65379 -117.89845 153.88347 C -110.8514 160.04004 -68.021374 156.60786 -77.732081 140.95429 C -67.451937 138.82859 -65.629923 122.49027 -76.170675 119.99738 C -69.537259 109.94283 -84.329759 100.05771 -89.045549 103.47556 C -84.622269 90.125668 -103.59216 85.282921 -110.75575 95.137064 z"/>
+                        <GeometryDrawing Brush="#FF19C101" Geometry="M -107.67773 114.22169 C -113.86733 112.43872 -118.88721 115.3486 -120.46315 120.04596 C -128.18383 118.48468 -133.26999 129.34175 -126.55565 131.80464 C -129.94955 132.83973 -132.35334 135.06746 -132.06538 137.98691 C -144.15113 141.8314 -137.18902 150.86072 -125.44311 149.13977 C -121.9628 151.55627 -117.23335 151.69476 -113.25811 150.00721 C -107.75247 153.7575 -74.29067 151.66678 -81.877352 142.13137 C -73.84579 140.83649 -72.42231 130.88396 -80.657475 129.36541 C -75.474988 123.24065 -87.031921 117.21911 -90.716225 119.30111 C -87.260447 111.16898 -102.08104 108.21901 -107.67773 114.22169 z"/>
+                    </DrawingGroup>
+                    <DrawingGroup  Transform="1.1,0,0,1.15,180,-15">
+                        <GeometryDrawing Brush="{StaticResource brsTreeTrunk}" Geometry="M -153.75004 152.20342 L -127.29899 177.39007 L -125.63132 167.38403 L -143.9111 152.68023 L -153.75004 152.20342 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsTreeTrunk}" Geometry="M -127.29899 177.39007 L -124.51954 206.85228 L -128.96666 212.96708 L -90.054309 213.52297 L -106.73103 204.62872 L -108.9546 142.36895 L -125.07543 140.70128 L -127.29899 177.39007 z"/>
+                        <GeometryDrawing Brush="#FF3EB200" Geometry="M -116.84677 76.009052 C -127.79984 71.962429 -136.68299 78.566691 -139.47177 89.227802 C -153.13425 85.684335 -162.13468 110.32553 -150.25302 115.9153 C -156.25885 118.26453 -160.51258 123.32058 -160.00302 129.94656 C -181.38989 138.672 -169.06977 159.16493 -148.28427 155.25906 C -142.12555 160.74356 -133.75633 161.05787 -126.72177 157.22781 C -116.97901 165.73947 -57.76516 160.99436 -71.190517 139.35281 C -56.977895 136.41397 -54.458903 113.82573 -69.031824 110.37923 C -59.860918 96.478493 -80.312009 82.812 -86.831737 87.537296 C -80.716417 69.080639 -106.94287 62.385389 -116.84677 76.009052 z"/>
+                        <GeometryDrawing Brush="{StaticResource brsTreeTrunk}" Geometry="M -108.39871 186.84021 L -80.048274 147.37197 L -86.718964 147.92786 L -108.9546 174.61061 C -111.32215 179.11262 -111.99384 183.33198 -108.39871 186.84021 z"/>
+                        <GeometryDrawing Brush="#FF4EDE00" Geometry="M -110.75575 95.137064 C -118.67823 92.210098 -125.10351 96.987033 -127.12066 104.69833 C -137.00288 102.1353 -143.51299 119.95854 -134.91886 124.00168 C -139.26294 125.70091 -142.33971 129.358 -141.97114 134.15064 C -157.44049 140.46185 -148.52922 155.28461 -133.49484 152.45945 C -129.04017 156.42645 -122.98662 156.65379 -117.89845 153.88347 C -110.8514 160.04004 -68.021374 156.60786 -77.732081 140.95429 C -67.451937 138.82859 -65.629923 122.49027 -76.170675 119.99738 C -69.537259 109.94283 -84.329759 100.05771 -89.045549 103.47556 C -84.622269 90.125668 -103.59216 85.282921 -110.75575 95.137064 z"/>
+                        <GeometryDrawing Brush="#FF19C101" Geometry="M -107.67773 114.22169 C -113.86733 112.43872 -118.88721 115.3486 -120.46315 120.04596 C -128.18383 118.48468 -133.26999 129.34175 -126.55565 131.80464 C -129.94955 132.83973 -132.35334 135.06746 -132.06538 137.98691 C -144.15113 141.8314 -137.18902 150.86072 -125.44311 149.13977 C -121.9628 151.55627 -117.23335 151.69476 -113.25811 150.00721 C -107.75247 153.7575 -74.29067 151.66678 -81.877352 142.13137 C -73.84579 140.83649 -72.42231 130.88396 -80.657475 129.36541 C -75.474988 123.24065 -87.031921 117.21911 -90.716225 119.30111 C -87.260447 111.16898 -102.08104 108.21901 -107.67773 114.22169 z"/>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <LinearGradientBrush x:Key="brsMt1" StartPoint="0,1" EndPoint="1,0">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF222222" Offset="0.4"/>
+                <GradientStop Color="#FFEDEDED" Offset="0.7"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="brsMt2" StartPoint="0,0.4" EndPoint="1,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF222222" Offset="0.15"/>
+                <GradientStop Color="#FFEDEDED" Offset="0.6"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="brsMt3" StartPoint="0,0.5" EndPoint="1,0.4">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF222222" Offset="0.4"/>
+                <GradientStop Color="#FFEDEDED" Offset="0.8"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="brsMt4" StartPoint="0.5,0.8" EndPoint="1,0">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF222222" Offset="0.12"/>
+                <GradientStop Color="#FFEDEDED" Offset="0.5"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="brsMt5" StartPoint="0,1" EndPoint="1,0">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF222222" Offset="0"/>
+                <GradientStop Color="#FFEDEDED" Offset="0.6"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="brsMt6" StartPoint="0.5,0.5" EndPoint="1,0">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF222222" Offset="0"/>
+                <GradientStop Color="#FFEDEDED" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+
+
+    <DrawingBrush x:Key="brsHexMountain" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsSky}" Geometry="M 180.10836 178.84964 L 59.999999 248.19424 L -60.108365 178.84964 L -60.108365 40.160446 L 60.000001 -29.184151 L 180.10837 40.160447 L 180.10836 178.84964 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="1,0,0,1,-68.5,-32.7" >
+                    <GeometryDrawing Brush="{StaticResource brsMt1}" Geometry="M 160.09375 38.96875 C 160.00269 39.000897 159.90447 39.031147 159.8125 39.0625 L 161.75 69 C 161.75 68.999999 190.10575 112.34555 199 115.125 C 207.89425 117.90446 243.46875 140.6875 243.46875 140.6875 L 248.6875 143.125 L 248.6875 85.5625 C 206.34629 95.930141 185.35645 61.190968 160.09375 38.96875 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsMt2}" Geometry="M 89.65625 29 C 49.077456 78.490179 21.161032 88.490037 8.46875 90.9375 L 8.46875 131.65625 C 18.318216 128.59892 26.125 126.25 26.125 126.25 L 61.71875 114.5625 L 73.9375 97.90625 L 91.15625 74 L 100.0625 56.21875 L 100.625 39.53125 L 105.15625 33.90625 C 99.374376 34.072786 93.471995 34.238721 89.65625 29 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsMt3}" Geometry="M 105.15625 33.90625 L 100.625 39.53125 L 100.0625 56.21875 L 91.15625 74 L 73.9375 97.90625 L 61.71875 114.5625 L 26.125 126.25 C 26.125 126.25 18.318216 128.59892 8.46875 131.65625 L 8.46875 211.71875 L 128.5625 281.0625 L 248.6875 211.71875 L 248.6875 143.125 L 243.46875 140.6875 C 243.46875 140.6875 207.89425 117.90446 199 115.125 C 190.10575 112.34555 161.75 68.999999 161.75 69 L 159.84375 39.3125 C 134.68393 71.583655 107.48197 46.316335 105.28125 33.90625 C 105.2397 33.907447 105.19781 33.905052 105.15625 33.90625 z M 169.40625 47.78125 C 172.4858 50.842798 175.55994 53.978696 178.65625 57.09375 C 175.56028 53.978787 172.48578 50.842455 169.40625 47.78125 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsMt4}" Geometry="M 67.03125 85.75 L 66.71875 97.90625 L 84.5 131.8125 L 170.09375 192.40625 L 186.21875 216.84375 L 215.71875 230.75 L 248.6875 211.71875 L 248.6875 180.40625 L 243.46875 176.84375 L 236.8125 165.15625 L 204 150.15625 L 200.09375 139.6875 C 148.53973 161.7382 132.84416 129.39468 121.71875 117.71875 C 103.43234 113.0763 72.565446 98.364136 67.03125 85.75 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsMt5}" Geometry="M 67 85.6875 C 35.96943 109.19244 35.989216 115.91027 8.46875 131.96875 L 8.46875 211.71875 L 128.5625 281.0625 L 215.71875 230.75 L 186.21875 216.84375 L 170.09375 192.40625 L 84.5 131.8125 L 66.71875 97.90625 L 67.03125 85.75 C 67.022133 85.729219 67.00898 85.70827 67 85.6875 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsMt6}" Geometry="M 248.6875 128.75 C 232.59129 134.04214 228.27403 153.32691 200.75 139.40625 C 200.52805 139.50262 200.31438 139.59313 200.09375 139.6875 L 204 150.15625 L 236.8125 165.15625 L 243.46875 176.84375 L 248.6875 180.40625 L 248.6875 128.75 z "/>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <LinearGradientBrush  x:Key="brsSand"  StartPoint="0.5,0" EndPoint="0.5,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFE8DE54" Offset="0"/>
+                <GradientStop Color="#FF999228" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+
+    <DrawingBrush x:Key="brsHexDesert" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsSky}" Geometry="M 180.10836 178.84964 L 59.999999 248.19424 L -60.108365 178.84964 L -60.108365 40.160446 L 60.000001 -29.184151 L 180.10837 40.160447 L 180.10836 178.84964 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="1,0,0,1,-68.5,-32.7">
+                    <GeometryDrawing Brush="{StaticResource brsSand}" Geometry="M 129.78125 36.71875 C 116.89861 36.860428 100.81181 41.845999 88.375 41.75 C 82.022611 41.700966 67.375 39.03125 67.375 39.03125 L 23.1875 64.53125 L 233.96875 64.53125 L 199.8125 44.8125 C 199.8125 44.8125 186.82036 47.024322 181.21875 46.75 C 166.26123 46.017501 147.27332 37.411565 132.3125 36.75 C 131.48416 36.713371 130.64009 36.709305 129.78125 36.71875 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsSand}" Geometry="M 163 52.8125 C 154.79518 52.771949 139.52238 54.865857 131.75 53.4375 C 121.55845 51.564563 107.1049 60.104145 98.40625 60.09375 C 85.692892 60.078559 85.470659 55.186812 68.9375 55.65625 C 57.982021 55.967319 50.771943 57.243885 32.09375 59.375 L 8.46875 73.03125 L 8.46875 101.90625 L 248.6875 101.90625 L 248.6875 73.03125 L 217.21875 54.875 C 217.21875 54.875 203.08021 58.500413 199 58.96875 C 188.75951 60.144181 174.82693 53.373294 164.53125 52.875 C 164.05141 52.851776 163.54699 52.815203 163 52.8125 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsSand}" Geometry="M 50.3125 85.625 C 34.405396 85.556245 20.367764 88.643003 8.46875 90.9375 L 8.46875 155.375 L 248.6875 155.375 L 248.6875 99.46875 C 234.46553 99.649548 205.17381 94.464894 183.46875 94.71875 C 167.89665 94.907379 159.95354 94.841569 113.96875 87.34375 C 95.249511 84.291578 77.894322 92.349021 53.53125 85.6875 C 52.454289 85.653751 51.372974 85.629584 50.3125 85.625 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsSand}" Geometry="M 248.6875 112.09375 C 242.59732 111.82697 221.62554 119.99214 215.78125 119.96875 C 178.15093 115.90019 169.19951 125.60866 145.0625 132.15625 C 115.07225 140.29164 93.031142 142.78478 72.5625 140.71875 C 52.093857 138.65272 35.433325 157.03412 8.46875 151.96875 L 8.46875 196.25 L 248.6875 196.25 L 248.6875 112.09375 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsSand}" Geometry="M 165.09375 178.5 C 148.1181 178.66809 107.5702 183.46893 90.59375 183.5 C 59.763454 183.55642 8.46875 190.25 8.46875 190.25 L 8.46875 211.71875 L 57.9375 240.28125 L 199.21875 240.28125 L 248.6875 211.71875 L 248.6875 184.625 C 248.6875 184.625 215.62258 184.74769 201.21875 184.625 C 190.22698 184.53137 176.08538 178.39116 165.09375 178.5 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsSand}" Geometry="M 248.6875 198.5505 C 248.6875 198.5505 200.37801 214.39321 177.32091 218.51861 C 156.54466 222.23591 126.67829 218.63609 105.62859 220.1791 C 86.581845 221.57528 50.46875 235.96875 50.46875 235.96875 L 128.5625 281.0625 L 248.6875 211.71875 L 248.6875 198.5505 z"/>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="brsHouse" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup >
+                <GeometryDrawing Geometry="M 5 0 L 10 0 L 10 3.4 L 15 0 L 30 10 L 30 30 L 0 30 L 0 10 L 5 6.7 Z"/>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+
+
+
+
+
+
+    <LinearGradientBrush x:Key="diceGradient" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="1,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                <GradientStop Color="#FFF5F5F5" Offset="0.34368038"/>
+                <GradientStop Color="#FFFFFFFF" Offset="0.52339768"/>
+                <GradientStop Color="#FFF5F5F5" Offset="0.63781703"/>
+                <GradientStop Color="#FFF0F0F0" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+
+    <DrawingBrush x:Key="brs2d6" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource diceGradient}"
+                                 Geometry="m 245.28125 205.25 c -3.41263 0 -6.48075 1.34748 -8.75 3.53125 l -0.0937 -0.0937 -44.83671 36.39557 125.17356 122.87976 31.2569 -49.05658 c 0.0417 -0.0506 0.0841 -0.10499 0.125 -0.15625 1.72526 -2.15991 2.75 -4.91447 2.75 -7.90625 l 0 -92.96875 c 0 -7.00063 -5.65562 -12.625 -12.65625 -12.625 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="3" Brush="Black" LineJoin="Round"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="White"
+                                 Geometry="m 200.89758 241.77414 104.04572 0 c 7.83474 0 14.14213 6.30739 14.14213 14.14214 l 0 104.04571 c 0 7.83474 -6.30739 14.14214 -14.14213 14.14214 l -104.04572 0 c -7.83474 0 -14.14213 -6.3074 -14.14213 -14.14214 l 0 -104.04571 c 0 -7.83475 6.30739 -14.14214 14.14213 -14.14214 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="3" Brush="Black" LineJoin="Round"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                </DrawingGroup>
+
+                <DrawingGroup Transform="2.1639905 0 0 2.1639905 -248.31347 -318.90513">
+                    <GeometryDrawing Brush="#FF747370"
+                                     Geometry="m 218.48707 272.55679 a 4.9548903 4.9548903 0 1 1 -9.90978 0 4.9548903 4.9548903 0 1 1 9.90978 0 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="2.1639905 0 0 2.1639905 -213.39329 -282.09737">
+                    <GeometryDrawing Brush="#FF747370"
+                                     Geometry="m 218.48707 272.55679 a 4.9548903 4.9548903 0 1 1 -9.90978 0 4.9548903 4.9548903 0 1 1 9.90978 0 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="2.1639905 0 0 2.1639905 -174.69796 -244.81772">
+                    <GeometryDrawing Brush="#FF747370"
+                                     Geometry="m 218.48707 272.55679 a 4.9548903 4.9548903 0 1 1 -9.90978 0 4.9548903 4.9548903 0 1 1 9.90978 0 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="2.1639905 0 0 0.97351426 -194.04562 -41.858127">
+                    <GeometryDrawing Brush="#FF747370"
+                                     Geometry="m 218.48707 272.55679 a 4.9548903 4.9548903 0 1 1 -9.90978 0 4.9548903 4.9548903 0 1 1 9.90978 0 z"/>
+                </DrawingGroup>
+
+                <GeometryDrawing Brush="{StaticResource diceGradient}"
+                                 Geometry="m 294.27859 250.74678 c -1.70959 2.95354 -2.08038 6.28394 -1.32718 9.34189 l -0.12804 0.0342 9.03807 57.03755 169.0556 -46.7767 -26.79872 -51.62722 c -0.0229 -0.0614 -0.0487 -0.12538 -0.0726 -0.18646 -1.00506 -2.57519 -2.8757 -4.84199 -5.465 -6.34074 l -80.46185 -46.57338 c -6.05885 -3.50702 -13.75981 -1.4298 -17.26683 4.62904 z">
+                    <GeometryDrawing.Pen>
+                        <Pen Thickness="3" Brush="Black" LineJoin="Round"/>
+                    </GeometryDrawing.Pen>
+                </GeometryDrawing>
+                <DrawingGroup Transform="0.50095733 -0.86547198 0.86547198 0.50095733 0 0">
+                    <GeometryDrawing Brush="White"
+                                 Geometry="m -113.97696 416.82748 104.0457161 0 c 7.8347431 0 14.1421356 6.3074 14.1421356 14.14214 l 0 104.04572 c 0 7.83474 -6.3073925 14.14213 -14.1421356 14.14213 l -104.0457161 0 c -7.83474 0 -14.14213 -6.30739 -14.14213 -14.14213 l 0 -104.04572 c 0 -7.83474 6.30739 -14.14214 14.14213 -14.14214 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="3" Brush="Black" LineJoin="Round"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                </DrawingGroup>
+
+                <DrawingGroup Transform="1.0840669 -1.8728731 1.8728731 1.0840669 -402.85774 413.94415">
+                    <GeometryDrawing Brush="#FF747370"
+                                     Geometry="m 218.48707 272.55679 a 4.9548903 4.9548903 0 1 1 -9.90978 0 4.9548903 4.9548903 0 1 1 9.90978 0 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="1.0840669 -1.8728731 1.8728731 1.0840669 -367.66496 354.0276">
+                    <GeometryDrawing Brush="#FF747370"
+                                     Geometry="m 218.48707 272.55679 a 4.9548903 4.9548903 0 1 1 -9.90978 0 4.9548903 4.9548903 0 1 1 9.90978 0 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="1.0840669 -1.8728731 1.8728731 1.0840669 -305.63408 386.87472">
+                    <GeometryDrawing Brush="#FF747370"
+                                     Geometry="m 218.48707 272.55679 a 4.9548903 4.9548903 0 1 1 -9.90978 0 4.9548903 4.9548903 0 1 1 9.90978 0 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="1.0840669 -1.8728731 0.84254932 0.48768911 -123.62619 464.71076">
+                    <GeometryDrawing Brush="#FF747370"
+                                     Geometry="m 218.48707 272.55679 a 4.9548903 4.9548903 0 1 1 -9.90978 0 4.9548903 4.9548903 0 1 1 9.90978 0 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="0.48768911 -0.84254932 1.8728731 1.0840669 -204.7261 98.475243">
+                    <GeometryDrawing Brush="#FF747370"
+                                     Geometry="m 218.48707 272.55679 a 4.9548903 4.9548903 0 1 1 -9.90978 0 4.9548903 4.9548903 0 1 1 9.90978 0 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="1.0840669 -1.8728731 0.84254932 0.48768911 -150.52416 540.21385">
+                    <GeometryDrawing Brush="#FF747370"
+                                     Geometry="m 218.48707 272.55679 a 4.9548903 4.9548903 0 1 1 -9.90978 0 4.9548903 4.9548903 0 1 1 9.90978 0 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="1.0840669 -1.8728731 1.8728731 1.0840669 -338.66669 447.74909">
+                    <GeometryDrawing Brush="#FF747370"
+                                     Geometry="m 218.48707 272.55679 a 4.9548903 4.9548903 0 1 1 -9.90978 0 4.9548903 4.9548903 0 1 1 9.90978 0 z"/>
+                </DrawingGroup>
+
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <RadialGradientBrush x:Key="brsBlackFuzzyCircle" 
+                         GradientOrigin="0.5,0.5" 
+                         Center="0.5,0.5" 
+                         RadiusX="0.5" RadiusY="0.5">
+        <RadialGradientBrush.GradientStops>
+            <GradientStop Color="Black" Offset="0" />
+            <GradientStop Color="Black" Offset="0.85" />
+            <GradientStop Color="#00000000" Offset="1" />
+        </RadialGradientBrush.GradientStops>
+    </RadialGradientBrush>
+
+
+
+    <LinearGradientBrush x:Key="brsBrickFill" StartPoint="0,0" EndPoint="0.5,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFC85335" Offset="0"/>
+                <GradientStop Color="#FF872B00" Offset="0.9"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="brsMortar" StartPoint="0,0.5" EndPoint="1,0.5">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFA6A472" Offset="1"/>
+                <GradientStop Color="#FFF2EA8F" Offset="0"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="brsMortarHorizontal" StartPoint="0.5,0" EndPoint="0.5,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFA6A472" Offset="1"/>
+                <GradientStop Color="#FFF2EA8F" Offset="0"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <DrawingBrush x:Key="brsChipBrick" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsBrickFill}" Geometry="M 113.25 52.40625 C 58.021525 52.40625 13.25 97.177775 13.25 152.40625 C 13.25 207.63473 58.021525 252.40625 113.25 252.40625 C 168.47848 252.40625 213.25 207.63473 213.25 152.40625 C 213.25 97.177775 168.47848 52.40625 113.25 52.40625 z "/>
+                </DrawingGroup>
+                <DrawingGroup Transform="0 1 -1 0 0 0">
+                    <GeometryDrawing Brush="{StaticResource brsMortar}" Geometry="m 107.22403 -46.391022 40 0 0 8.576151 -40 0 z"/>
+                    <GeometryDrawing Brush="{StaticResource brsMortar}" Geometry="m 67.22403 -106.39102 40 0 0 8.576149 -40 0 z"/>
+                    <GeometryDrawing Brush="{StaticResource brsMortar}" Geometry="m 147.22403 -106.39102 40 0 0 8.576149 -40 0 z"/>
+                    <GeometryDrawing Brush="{StaticResource brsMortar}" Geometry="m 107.22403 -166.39102 40 0 0 8.57615 -40 0 z"/>
+                    <GeometryDrawing Brush="{StaticResource brsMortar}" Geometry="m 187.22403 -166.39102 40 0 0 8.57615 -40 0 z"/>
+                </DrawingGroup>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsMortar}" Geometry="M 37.8125 187.21875 L 37.8125 218.0625 C 40.489552 221.13522 43.377123 224.05607 46.40625 226.78125 L 46.40625 187.21875 L 37.8125 187.21875 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsMortar}" Geometry="M 97.8125 227.21875 L 97.8125 251.21875 C 100.64242 251.65759 103.50312 251.99122 106.40625 252.1875 L 106.40625 227.21875 L 97.8125 227.21875 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsMortarHorizontal}" Geometry="M 72.09375 61.25 C 66.73761 63.671633 61.646967 66.555804 56.84375 69.84375 L 169.65625 69.84375 C 164.85462 66.557358 159.76036 63.670716 154.40625 61.25 L 72.09375 61.25 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsMortarHorizontal}" Geometry="M 27.3125 101.25 C 25.653371 104.03073 24.138326 106.89694 22.75 109.84375 L 203.75 109.84375 C 202.36264 106.89964 200.84519 104.02831 199.1875 101.25 L 27.3125 101.25 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsMortarHorizontal}" Geometry="M 13.875 141.25 C 13.560371 144.08454 13.353861 146.94279 13.28125 149.84375 L 213.21875 149.84375 C 213.14612 146.94202 212.93978 144.08527 212.625 141.25 L 13.875 141.25 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsMortarHorizontal}" Geometry="M 17.5 181.25 C 18.37953 184.17475 19.366604 187.03858 20.5 189.84375 L 206 189.84375 C 207.13468 187.03574 208.15097 184.17784 209.03125 181.25 L 17.5 181.25 z "/>
+                    <GeometryDrawing Brush="{StaticResource brsMortarHorizontal}" Geometry="M 40.71875 221.25 C 43.624266 224.31086 46.730339 227.16959 50 229.84375 L 176.53125 229.84375 C 179.8014 227.16919 182.90661 224.31137 185.8125 221.25 L 40.71875 221.25 z "/>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <LinearGradientBrush x:Key="brsGrainKernel" StartPoint="0,0" EndPoint="1,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFEADA00" Offset="0.2"/>
+                <GradientStop Color="#FF9D7B00" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="brsBlueGrain" StartPoint="0,0" EndPoint="0.5,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF063EDD" Offset="1"/>
+                <GradientStop Color="#FFABBFFF" Offset="0"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <DrawingBrush x:Key="brsChipGrain" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsBlueGrain}" Geometry="m 113.25 52.40625 c -55.228475 0 -100 44.771525 -100 100 0 55.22848 44.771525 100 100 100 55.22848 0 100 -44.77152 100 -100 0 -55.228475 -44.77152 -100 -100 -100 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="1.8177296 0 0 1.8177296 -221.88443 -203.98951">
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 158.80431 203.86282 c -2.04743 -2.19341 -5.50021 -10.42186 -3.52634 -20.99599 4.18541 5.8479 5.54057 6.31931 11.61795 14.21672 6.0774 7.8974 -6.04418 8.97268 -8.09161 6.77927 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 170.99453 200.36246 c -0.0371 -3.00027 -3.23111 -11.33257 -11.96768 -17.60798 1.01888 7.11881 0.36567 8.3963 1.43447 18.30394 1.0688 9.90764 10.5703 2.30433 10.53321 -0.69596 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 161.42624 210.04013 c -2.46028 -1.71757 -7.55504 -9.04371 -7.83252 -19.79692 5.31418 4.8451 6.7379 5.02317 14.33029 11.47756 7.5924 6.45439 -4.03748 10.03693 -6.49777 8.31936 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 176.29981 202.56096 c 0.0229 -3.00041 -3.00409 -11.39485 -11.61358 -17.84353 0.87649 7.13775 0.19789 8.40194 1.06858 18.32895 0.87069 9.92701 10.52217 2.515 10.545 -0.48542 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 164.1107 217.64789 c -2.66782 -1.37323 -8.69631 -7.95246 -10.40895 -18.57204 5.91424 4.09113 7.34898 4.07726 15.73614 9.45864 8.38715 5.38138 -2.65936 10.48662 -5.32719 9.1134 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 172.73477 190.86226 -6.82999 -20.3759">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 179.02924 210.78236 c 0.81455 -2.88782 0.11239 -11.78366 -6.488 -20.27738 -1.03998 7.11576 -2.0284 8.15581 -3.81072 17.96025 -1.78231 9.80443 9.48418 5.20496 10.29872 2.31713 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 167.58913 224.99079 c -2.66783 -1.37323 -8.69631 -7.95246 -10.40896 -18.57203 5.91425 4.09112 7.34899 4.07726 15.73614 9.45863 8.38716 5.38138 -2.65935 10.48662 -5.32718 9.1134 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 182.50767 218.12526 c 0.81455 -2.88782 0.11239 -11.78365 -6.48801 -20.27738 -1.03998 7.11576 -2.02839 8.15581 -3.81071 17.96025 -1.78231 9.80443 9.48417 5.20496 10.29872 2.31713 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 170.76143 231.86254 c -2.66782 -1.37322 -8.69631 -7.95245 -10.40895 -18.57203 5.91425 4.09113 7.34898 4.07726 15.73614 9.45864 8.38715 5.38138 -2.65936 10.48662 -5.32719 9.11339 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 185.67998 224.99702 c 0.81454 -2.88783 0.11239 -11.78366 -6.48801 -20.27738 -1.03998 7.11575 -2.0284 8.1558 -3.81071 17.96024 -1.78232 9.80444 9.48417 5.20497 10.29872 2.31714 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <DrawingGroup Transform="0.55013683 0 0 0.55013683 122.0668 112.22214">
+                        <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 111.375 219.15625 -8.5625 5.71875 15.40834 26.31 c 3.46248 -0.18963 6.5039 -0.4423 9.86375 -0.97541 z">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="2" Brush="#FF855100"/>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 174.23986 239.20544 c -2.66782 -1.37322 -8.69631 -7.95245 -10.40895 -18.57203 5.91425 4.09113 7.34898 4.07726 15.73614 9.45864 8.38715 5.38138 -2.65936 10.48662 -5.32719 9.11339 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 189.1584 232.33992 c 0.81455 -2.88783 0.1124 -11.78366 -6.488 -20.27739 -1.03998 7.11576 -2.0284 8.15581 -3.81071 17.96025 -1.78232 9.80444 9.48417 5.20497 10.29871 2.31714 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 165.03342 185.39639 -6.82999 -20.37591">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 159.24637 183.15859 -6.82998 -20.3759">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 155.75365 183.70936 -6.82999 -20.3759">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 153.52151 190.35396 -6.82999 -20.3759">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 153.81086 199.22489 -6.82999 -20.3759">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 169.44604 189.29247 -6.82999 -20.37591">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                </DrawingGroup>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 123.93917 138.60442 c -2.31898 -4.93657 -3.70371 -21.09786 5.60817 -38.29107 3.97981 12.45137 6.06142 14.02269 12.17152 31.07496 6.11013 17.05227 -15.4607 12.15267 -17.77969 7.21611 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 146.98115 139.34677 c 1.609 -5.21138 0.72989 -21.40806 -10.88535 -37.13713 -2.20725 12.88423 -4.04977 14.7301 -7.72593 32.46705 -3.67616 17.73693 17.00228 9.88145 18.61128 4.67008 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 125.03037 150.75378 c -3.29861 -4.34355 -8.02727 -19.85951 -2.51054 -38.61805 6.49192 11.34595 8.85573 12.448 18.39163 27.84864 9.53592 15.40064 -12.58247 15.11299 -15.88109 10.76941 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 154.93362 146.10894 c 1.71278 -5.17819 1.15735 -21.38919 -10.14138 -37.34715 -2.46417 12.83759 -4.34319 14.64629 -8.3729 32.30626 -4.02971 17.65998 16.80151 10.21909 18.51428 5.04089 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 125.432 165.41279 c -3.84971 -3.86355 -10.61032 -18.60803 -7.65102 -37.93573 7.95051 10.37617 10.44044 11.1523 21.94974 25.13977 11.50928 13.98748 -10.449 16.65951 -14.29872 12.79596 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 155.28994 123.88125 -0.4532 -39.060629">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 155.07084 161.85467 c 3.01969 -4.54188 6.7659 -20.32387 0.0834 -38.69948 -5.76753 11.73078 -8.05756 12.97892 -16.6088 28.94733 -8.55121 15.96839 13.50559 14.29404 16.52529 9.75215 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 127.35496 180.05635 c -3.84972 -3.86355 -10.61033 -18.60803 -7.65103 -37.93573 7.95052 10.37616 10.44046 11.1523 21.94974 25.13976 11.50929 13.98749 -10.449 16.65951 -14.29871 12.79597 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 156.9938 176.49823 c 3.01969 -4.54189 6.7659 -20.32385 0.0834 -38.69948 -5.76753 11.73079 -8.05756 12.97893 -16.6088 28.94733 -8.55122 15.96839 13.50559 14.29404 16.52529 9.75215 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 129.01104 193.71408 c -3.8497 -3.86355 -10.61031 -18.60803 -7.65103 -37.93573 7.95053 10.37616 10.44046 11.1523 21.94976 25.13976 11.50928 13.98749 -10.44902 16.65951 -14.29873 12.79597 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 158.6499 190.15596 c 3.01969 -4.54189 6.7659 -20.32385 0.0834 -38.69948 -5.76753 11.73079 -8.05756 12.97893 -16.60879 28.94733 -8.55124 15.96839 13.50558 14.29404 16.52529 9.75215 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 150.25 202.34375 -9.90625 2.8125 3.82583 41.21625 c 3.70231 -1.21315 6.95983 -2.63039 10.45751 -4.25 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 130.93401 208.35763 c -3.84971 -3.86355 -10.61032 -18.60802 -7.65104 -37.93572 7.95055 10.37618 10.44046 11.1523 21.94976 25.13976 11.50928 13.98748 -10.449 16.65951 -14.29872 12.79596 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 160.57286 204.79952 c 3.01968 -4.54187 6.7659 -20.32385 0.0834 -38.69948 -5.76753 11.73079 -8.05756 12.97893 -16.60879 28.94732 -8.55122 15.96839 13.50558 14.29405 16.52529 9.75216 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 145.01426 110.13005 -0.4532 -39.060644">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="m 136.25024 103.03122 -0.4532 -39.060648">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="M 129.90043 102.03627 129.44724 62.975638">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="M 122.33313 112.28708 121.87994 73.226433">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="M 117.88662 127.79577 117.43343 88.73512">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource brsGrainKernel}" Geometry="M 150.47564 119.33134 150.02245 80.270698">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF855100"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <LinearGradientBrush x:Key="brsLumberGreen"  StartPoint="0.2,0" EndPoint="1,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF06DD06" Offset="0"/>
+                <GradientStop Color="#FF006C00" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="brsLog" StartPoint="0,0" EndPoint="1,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFA6A472" Offset="1"/>
+                <GradientStop Color="#FFF2EA8F" Offset="0"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="brsBark" StartPoint="0,0.4" EndPoint="1,0.6">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFC85335" Offset="0"/>
+                <GradientStop Color="#FF872B00" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+
+    <DrawingBrush x:Key="brsChipLumber" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsLumberGreen}" Geometry="M 113.25 52.40625 C 58.021525 52.40625 13.25 97.177775 13.25 152.40625 C 13.25 207.63473 58.021525 252.40625 113.25 252.40625 C 168.47848 252.40625 213.25 207.63473 213.25 152.40625 C 213.25 97.177775 168.47848 52.40625 113.25 52.40625 z "/>
+                </DrawingGroup>
+
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsBark}" Geometry="m 41.75588 160.11595 89.19537 -46.38957 c 14.03922 -8.50855 33.12216 8.54851 16.44997 24.47324 -1.34739 1.28699 -68.35875 65.01844 -68.35875 65.01844 z">
+                    </GeometryDrawing>
+                    <DrawingGroup Transform="0.89442342 0 0 0.89373184 -25.741697 75.959149">
+                        <GeometryDrawing Brush="{StaticResource brsLog}" Geometry="m 126.89939 118.48128 a 29.568789 29.568789 0 1 1 -59.137582 0 29.568789 29.568789 0 1 1 59.137582 0 z">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="6" Brush="{StaticResource brsBark}"/>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                    <DrawingGroup Transform="1.1057758 0 0 1.1049208 -40.051974 37.681195">
+                        <GeometryDrawing Geometry="m 108.41889 129.98026 a 17.248461 17.248461 0 1 1 -34.496918 0 17.248461 17.248461 0 1 1 34.496918 0 z">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="2" Brush="#FFC08139"/>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                    <DrawingGroup Transform="0.76504309 0 0 0.76445155 -8.9872257 81.935475">
+                        <GeometryDrawing Geometry="m 108.41889 129.98026 a 17.248461 17.248461 0 1 1 -34.496918 0 17.248461 17.248461 0 1 1 34.496918 0 z">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="3" Brush="#FFC08139"/>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                    <DrawingGroup Transform="0.36042303 0 0 0.36014434 27.902162 134.48744">
+                        <GeometryDrawing Geometry="m 108.41889 129.98026 a 17.248461 17.248461 0 1 1 -34.496918 0 17.248461 17.248461 0 1 1 34.496918 0 z">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="7" Brush="#FFC08139"/>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+
+                    <GeometryDrawing Brush="{StaticResource brsBark}" Geometry="m 97.685769 165.22976 84.443161 -50.04229 c 14.03922 -8.50855 37.14326 12.20123 20.47107 28.12596 -1.3474 1.28699 -68.35875 65.01844 -68.35875 65.01844 z">
+                    </GeometryDrawing>
+
+                    <DrawingGroup  Transform="0.89442342 0 0 0.89373184 29.457081 81.07296">
+                        <GeometryDrawing Brush="{StaticResource brsLog}" Geometry="m 126.89939 118.48128 a 29.568789 29.568789 0 1 1 -59.137582 0 29.568789 29.568789 0 1 1 59.137582 0 z">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="6" Brush="{StaticResource brsBark}"/>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                    <DrawingGroup Transform="1.1057758 0 0 1.1049208 15.146804 42.795006">
+                        <GeometryDrawing Geometry="m 108.41889 129.98026 a 17.248461 17.248461 0 1 1 -34.496918 0 17.248461 17.248461 0 1 1 34.496918 0 z">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="2" Brush="#FFC08139"/>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                    <DrawingGroup Transform="0.76504309 0 0 0.76445155 46.211552 87.049286">
+                        <GeometryDrawing Geometry="m 108.41889 129.98026 a 17.248461 17.248461 0 1 1 -34.496918 0 17.248461 17.248461 0 1 1 34.496918 0 z">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="3" Brush="#FFC08139"/>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                    <DrawingGroup Transform="0.36042303 0 0 0.36014434 83.100937 139.60125">
+                        <GeometryDrawing Geometry="m 108.41889 129.98026 a 17.248461 17.248461 0 1 1 -34.496918 0 17.248461 17.248461 0 1 1 34.496918 0 z">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="7" Brush="#FFC08139"/>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+
+                    <GeometryDrawing Brush="{StaticResource brsBark}" Geometry="M 82.310286 110.59762 160.19564 90.348956 c 15.13588 -6.68218 32.7566 18.410864 17.18107 29.587054 -1.51403 1.0864 -66.89653 38.71885 -66.89653 38.71885 z">
+                    </GeometryDrawing>
+
+                    <DrawingGroup  Transform="0.89442342 0 0 0.89373184 5.6960177 31.395945">
+                        <GeometryDrawing Brush="{StaticResource brsLog}" Geometry="m 126.89939 118.48128 a 29.568789 29.568789 0 1 1 -59.137582 0 29.568789 29.568789 0 1 1 59.137582 0 z">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="6" Brush="{StaticResource brsBark}"/>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                    <DrawingGroup Transform="1.1057758 0 0 1.1049208 -8.6142593 -6.8820086">
+                        <GeometryDrawing Geometry="m 108.41889 129.98026 a 17.248461 17.248461 0 1 1 -34.496918 0 17.248461 17.248461 0 1 1 34.496918 0 z">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="2" Brush="#FFC08139"/>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                    <DrawingGroup Transform="0.76504309 0 0 0.76445155 22.450489 37.372271">
+                        <GeometryDrawing Geometry="m 108.41889 129.98026 a 17.248461 17.248461 0 1 1 -34.496918 0 17.248461 17.248461 0 1 1 34.496918 0 z">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="3" Brush="#FFC08139"/>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                    <DrawingGroup Transform="0.36042303 0 0 0.36014434 59.339874 89.924234">
+                        <GeometryDrawing Geometry="m 108.41889 129.98026 a 17.248461 17.248461 0 1 1 -34.496918 0 17.248461 17.248461 0 1 1 34.496918 0 z">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="7" Brush="#FFC08139"/>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <LinearGradientBrush x:Key="brsOreBG" MappingMode="Absolute" StartPoint="41,0" EndPoint="98,215">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF739173" Offset="0"/>
+                <GradientStop Color="#FF296229" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+        <LinearGradientBrush.Transform>
+            <TranslateTransform X="68.571433" Y="32.857143"/>
+        </LinearGradientBrush.Transform>
+    </LinearGradientBrush>
+
+    <DrawingBrush x:Key="brsChipOre" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsOreBG}" Geometry="M 113.25 52.40625 C 58.021525 52.40625 13.25 97.177775 13.25 152.40625 C 13.25 207.63473 58.021525 252.40625 113.25 252.40625 C 168.47848 252.40625 213.25 207.63473 213.25 152.40625 C 213.25 97.177775 168.47848 52.40625 113.25 52.40625 z "/>
+                </DrawingGroup>
+
+                <DrawingGroup>
+                    <GeometryDrawing Brush="#FFD29E00" Geometry="m 41.477457 150.0311 45.833765 1.30953 11.131057 41.90515 59.583901 -49.43498 -8.51199 -17.35135 -23.24426 -1.96431 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF9A9A00" LineJoin="Bevel"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FFFFFC4B" Geometry="m 113.82933 149.37633 44.19685 0.32738 11.13105 43.54207 34.70271 -45.83376 -8.1846 -23.24426 -31.42886 0 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF9A9A00"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FFFFFC4B" Geometry="m 132.8176 147.73941 -9.49413 -42.23254 -47.143304 -1.30954 56.964834 -5.892913 28.80978 -1e-5 14.4049 26.190733 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF9A9A00" LineJoin="Bevel"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FFFFD800" Geometry="M 29.813806 193.72523 98.434359 193.5901 87.635168 150.06786 41.067567 149.81003 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF9A9A00"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FFFFD800" Geometry="m 100.85615 193.72523 68.62054 -0.13513 -10.79919 -43.52224 -46.5676 -0.25783 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF9A9A00"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FFFFD800" Geometry="m 64.843903 148.21885 68.620537 -0.13513 -10.79918 -43.52224 -46.567603 -0.25784 z">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF9A9A00"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Geometry="m 122.6687 104.19733 38.63132 -5.238153">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF9A9A00"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Geometry="m 158.35355 149.37633 36.9944 -23.89904">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="2" Brush="#FF9A9A00"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <LinearGradientBrush x:Key="brsWoolBG" StartPoint="0.2,0" EndPoint="1,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FF51FA51" Offset="0"/>
+                <GradientStop Color="#FF2CA82C" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+
+    <DrawingBrush x:Key="brsChipWool" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{StaticResource brsWoolBG}" Geometry="M 113.25 52.40625 C 58.021525 52.40625 13.25 97.177775 13.25 152.40625 C 13.25 207.63473 58.021525 252.40625 113.25 252.40625 C 168.47848 252.40625 213.25 207.63473 213.25 152.40625 C 213.25 97.177775 168.47848 52.40625 113.25 52.40625 z "/>
+                </DrawingGroup>
+                <DrawingGroup Transform="5.6608213 0 0 -5.6608213 -690.0196 1120.7294">
+                    <GeometryDrawing Brush="#FF000000" Geometry="m 134.70799 170.59149 c 0 2.31239 -1.87456 4.18695 -4.18695 4.18695 -2.31238 0 -4.18694 -1.87456 -4.18694 -4.18695 0 -2.31238 1.87456 -4.18694 4.18694 -4.18694 2.31239 0 4.18695 1.87456 4.18695 4.18694 z"/>
+                </DrawingGroup>
+                <DrawingGroup Transform="5.6608213 0 0 -5.6608213 -673.90257 1108.7206">
+                    <GeometryDrawing Brush="#FF000000" Geometry="m 131.35843 158.64475 -0.66991 6.58746 c 0 0 4.63355 2.34469 4.41025 0.44661 -0.2233 -1.89809 -2.23304 -7.81564 -2.23304 -7.81564 l -1.5073 0.78157 z"/>
+                    <GeometryDrawing Brush="#FF000000" Geometry="m 149.58951 159.27884 0.66991 6.58746 c 0 0 -4.63355 2.34469 -4.41025 0.44661 0.2233 -1.89809 2.23304 -7.81564 2.23304 -7.81564 l 1.5073 0.78157 z"/>
+                    <GeometryDrawing Brush="#FFFFFFFF" Geometry="m 136.68311 162.98138 c -0.97529 0 -1.89953 0.26275 -2.6875 0.71875 -0.29069 -0.0489 -0.60173 -0.0937 -0.90625 -0.0937 -2.95714 0 -5.34374 2.41786 -5.34375 5.375 0 0.4466 0.0531 0.86641 0.15625 1.28125 -0.15094 0.49477 -0.25 1.01856 -0.25 1.5625 0 2.70672 2.01675 4.92129 4.625 5.28125 0.93188 1.58035 2.62754 2.625 4.59375 2.625 0.7892 0 1.54394 -0.1619 2.21875 -0.46875 0.67481 0.30685 1.42955 0.46875 2.21875 0.46875 0.96414 0 1.84318 -0.24113 2.625 -0.6875 0.66804 0.29947 1.37717 0.46875 2.15625 0.46875 2.95714 0 5.37501 -2.38661 5.375 -5.34375 0 -0.73929 -0.1663 -1.4529 -0.4375 -2.09375 0.60781 -0.86883 1 -1.89122 1 -3.03125 0 -2.95714 -2.41784 -5.375 -5.375 -5.375 -0.72536 0 -1.43138 0.14464 -2.0625 0.40625 -0.81636 -0.50343 -1.75239 -0.78125 -2.78125 -0.78125 -0.81416 0 -1.59001 0.17462 -2.28125 0.5 -0.82308 -0.51545 -1.80164 -0.8125 -2.84375 -0.8125 z"/>
+                </DrawingGroup>
+                <GeometryDrawing Geometry="m 37.58772 175.32913 c 4.490069 -0.15131 6.194893 -0.45949 8.629612 -4.4864">
+                    <GeometryDrawing.Pen>
+                        <Pen Brush="#FFFFFFFF" Thickness="1"/>
+                    </GeometryDrawing.Pen>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <ImageBrush x:Key="brsWater"
+                ImageSource="Resources\Water.png"
+                Stretch="UniformToFill" TileMode="Tile"/>
+
+</ResourceDictionary>

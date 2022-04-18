@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Dawn_of_History.ucHouse"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:doh="clr-namespace:Dawn_of_History"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <doh:ShiftedConverter x:Key="shifted"/>
+    </UserControl.Resources>
+
+
+
+    <UserControl.RenderTransform>
+        <TranslateTransform 
+            X="{Binding Path=Location.X,FallbackValue=0}"
+            Y="{Binding Path=Location.Y,FallbackValue=0}"/>
+    </UserControl.RenderTransform>
+
+
+    <Canvas>
+        
+        <Path Data="M 3.33 0 L 6.67 0 L 6.67 2.267 L 10 0 L 20 6.67 L 20 20 L 0 20 L 0 6.67 L 3.33 4.47 Z"
+              Fill="{Binding Path=BuildingColor, FallbackValue=Black}" Stroke="White" StrokeThickness="1" 
+              Canvas.Left="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth,Converter={StaticResource shifted}}" 
+              Canvas.Top="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight, Converter={StaticResource shifted}}" 
+              />
+            
+    </Canvas>
+</UserControl>

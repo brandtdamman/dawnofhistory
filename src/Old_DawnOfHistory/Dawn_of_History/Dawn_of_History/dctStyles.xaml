@@ -1,0 +1,88 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    
+    <Style x:Key="rbtColorSquare" 
+           TargetType="{x:Type RadioButton}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Grid>
+                    <Border Height="24" Width="24" CornerRadius="6"
+                            Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" >
+                        <Border Margin="7" Background="White"
+                                Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" />                     
+                    </Border>
+                        
+                        <Border Height="24" Width="24" CornerRadius="6">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.2,0" EndPoint="1,1">
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                    <GradientStop Color="White" Offset="-1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Storyboard x:Key="swStory">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60" />
+            <EasingDoubleKeyFrame KeyTime="0:0:8" Value="60" />
+            <EasingDoubleKeyFrame KeyTime="0:0:8.5" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+
+    <Storyboard x:Key="swStoryRoll">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="150" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="550" />
+            <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="150" />
+            <!--<EasingDoubleKeyFrame KeyTime="0:0:8" Value="60" />
+            <EasingDoubleKeyFrame KeyTime="0:0:8.5" Value="0" />-->
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="150" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="550" />
+            <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="150" />
+            <!--<EasingDoubleKeyFrame KeyTime="0:0:8" Value="60" />
+            <EasingDoubleKeyFrame KeyTime="0:0:8.5" Value="0" />-->
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Storyboard x:Key="swStoryDiceStretch">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="150" />
+            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="225" />
+            <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="135" />
+            <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="170" />
+            <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="150" />
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Storyboard x:Key="swStoryDiceStretch - Copy">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="150" />
+            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="225" />
+            <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="135" />
+            <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="170" />
+            <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="150" />
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="150" />
+            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="150" />
+            <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="150" />
+            <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="150" />
+            <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="150" />
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+
+</ResourceDictionary>

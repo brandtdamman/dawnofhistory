@@ -1,0 +1,74 @@
+﻿<Window x:Class="Dawn_of_History.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Dawn_of_History" Title="Dawn of History"
+        Height="350" Width="525" WindowState="Maximized" 
+        Icon="/Dawn%20of%20History;component/ICO.ico" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="62*" />
+        </Grid.RowDefinitions>
+        <Viewbox>
+            <TextBlock Text="Dawn of History" Foreground="Black"
+                   HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top"
+                       FontFamily="Papyrus" FontSize="72" />
+        </Viewbox>
+        <StackPanel Grid.Row="1" Name="stackPanel1">
+            <Expander Header="Play" Width="Auto" FontFamily="Papyrus" 
+                      VerticalAlignment="Center" 
+                      VerticalContentAlignment="Center" 
+                      HorizontalAlignment="Center" 
+                      HorizontalContentAlignment="Center" FontWeight="Bold"
+                      FontSize="20">
+                
+                <Grid>
+                    <Button 
+                        Content="New Game."  Click="New_Game" 
+                        Width="95" Height="40" Margin="0,10" 
+                        FontFamily="Papyrus" FontSize="18" 
+                        FontWeight="Bold" />
+                </Grid>
+                
+            </Expander>
+            
+            <Expander Header="Options" Width="Auto" 
+                      FontFamily="Papyrus" 
+                      VerticalAlignment="Center" 
+                      VerticalContentAlignment="Center" 
+                      HorizontalAlignment="Center" 
+                      HorizontalContentAlignment="Center" 
+                      FontWeight="Bold"
+                      FontSize="20" >
+                
+                <Grid>
+                    <StackPanel>
+                        
+                        <Button Content="Delete all data."  
+                            Click="Delete" Width="125" 
+                            Height="40" Margin="0,10"
+                            FontFamily="Papyrus" 
+                            FontSize="18" FontWeight="Bold" />
+
+                        <StackPanel Orientation="Horizontal">
+                            
+                            <TextBlock Text="Number of Victory Points to Win: "/>
+                            
+                            <TextBlock Text="{Binding ElementName=sdrVP, Path=Value}" />
+                            
+                        </StackPanel>
+
+                        <Slider Value="10" TickPlacement="BottomRight" 
+                                SnapsToDevicePixels="True" IsSnapToTickEnabled="True"
+                                Name="sdrVP" Minimum="5" />
+                    </StackPanel>
+                </Grid>
+                
+            </Expander>
+
+        </StackPanel>
+    </Grid>
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/Dawn of History;component/ICO.ico" Stretch="Fill" TileMode="None" />
+    </Window.Background>
+</Window>

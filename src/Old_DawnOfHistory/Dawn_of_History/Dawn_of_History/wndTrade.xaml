@@ -1,0 +1,81 @@
+﻿<Window x:Class="Dawn_of_History.wndTrade"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
+        Title="wndTrade" xmlns:doh="clr-namespace:Dawn_of_History"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Name="WndTrade" SizeToContent="Height" mc:Ignorable="d" 
+        
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        d:DesignHeight="345" Width="299">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+
+            <TextBlock Margin="25" FontFamily="Papyrus" FontWeight="Bold"
+                   Text="Select 1 Resource you would like to buy."
+                   FontSize="24" Foreground="White" TextWrapping="Wrap"
+                    />
+
+            <StackPanel Orientation="Horizontal">
+
+                <TextBlock Name="tbxIron" Text="Amount of Gold: " 
+                           FontFamily="Papyrus" FontWeight="Bold"
+                           FontSize="24" Foreground="White" />
+
+                <TextBlock Name="tbxAmount" Text="{Binding Path=OreCard}"
+                           FontFamily="Papyrus" FontWeight="Bold"
+                           FontSize="24" Foreground="White" />
+
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <doh:ucChipLumber x:Name="ChipP21" MaxWidth="50" Margin="10" />
+
+            <doh:ucChipBrick x:Name="ChipP22" MaxWidth="50"  Margin="10" />
+
+            <doh:ucChipGrain x:Name="ChipP23" MaxWidth="50"  Margin="10" />
+
+            <doh:ucChipWool x:Name="ChipP25" MaxWidth="50"  Margin="10" />
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <RadioButton Name="rbt1"  
+                         VerticalAlignment="Center" Margin="23,0" 
+                         Background="Black" Style="{StaticResource rbtColorSquare}" />
+            <RadioButton Name="rbt2"
+                         VerticalAlignment="Center" Margin="23,0" 
+                         Background="Black" Style="{StaticResource rbtColorSquare}" />
+            <RadioButton Name="rbt3"
+                         VerticalAlignment="Center" Margin="23,0" 
+                         Background="Black" Style="{StaticResource rbtColorSquare}" />
+            <RadioButton Name="rbt4"
+                         VerticalAlignment="Center" Margin="23,0" 
+                         Background="Black" Style="{StaticResource rbtColorSquare}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" >
+
+            <Button Content="Buy" Click="Button_Click"
+                    FontFamily="Papyrus" Background="{Binding Path=PlayerColor}"
+                    Width="50" Margin="10" FontSize="15" Foreground="White" />
+
+            <Button Content="Close" Click="Close"
+                    FontFamily="Papyrus" Background="{Binding Path=PlayerColor}"
+                    Width="50" Margin="10" FontSize="15" Foreground="White" />
+
+        </StackPanel>
+
+    </Grid>
+    <Window.Background>
+        <ImageBrush ImageSource="/Dawn%20of%20History;component/Images/Water.png" />
+    </Window.Background>    
+</Window>

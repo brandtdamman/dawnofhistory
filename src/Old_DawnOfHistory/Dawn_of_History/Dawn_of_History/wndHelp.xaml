@@ -1,0 +1,62 @@
+﻿<Window x:Class="Dawn_of_History.wndHelp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:doh="clr-namespace:Dawn_of_History"
+        Title="wndHelp" WindowStyle="None" mc:Ignorable="d" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        d:DesignHeight="300" Width="700" SizeToContent="Height" 
+        x:Name="WindowHelp" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+
+        <StackPanel>
+            
+            <Button VerticalAlignment="Center" HorizontalAlignment="Right" 
+                    Content="X" Height="27" Width="17" Foreground="White"
+                    Background="Black" Click="Exit" />
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                
+                <doh:ucChipGrain Margin="5" />
+                
+                <doh:ucChipWool Margin="5" />
+                
+                <doh:ucChipBrick Margin="5" />
+                
+                <doh:ucChipLumber Margin="5" />
+                
+                <TextBlock Text="=" Foreground="{Binding Path=CurrentPlayer.PlayerColor}"
+                           FontSize="40" Margin="5" />
+                
+                <doh:ucHouse Margin="20,5,5,5" VerticalAlignment="Center" />
+                
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10" >
+                
+                <doh:ucChipBrick Margin="5" />
+                
+                <doh:ucChipLumber Margin="5" />
+
+                <TextBlock Text="=" Foreground="{Binding Path=game1.CurrentPlayer.PlayerColor}"
+                           FontSize="40" Margin="5" />
+
+                <doh:ucRoad Margin="20,5,5,5" 
+                            VerticalAlignment="Center" />
+
+            </StackPanel>
+
+
+            <StackPanel Name="sp1">
+                
+                <TextBlock Foreground="White" FontSize="40" 
+                           Margin="5" TextWrapping="Wrap"
+                           Name="tbx1" />
+                
+            </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

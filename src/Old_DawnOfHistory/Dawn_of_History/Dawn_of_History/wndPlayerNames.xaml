@@ -1,0 +1,72 @@
+﻿<Window x:Class="Dawn_of_History.wndPlayerNames"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="wndPlayerNames" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignHeight="460" d:DesignWidth="410" 
+        SizeToContent="WidthAndHeight" WindowStyle="ToolWindow" MinWidth="400">
+    
+    <Grid>
+        <StackPanel>
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <!--<TextBlock Grid.Column="0" Margin="1,0,0,-1" 
+                           Name="tbkClick"
+                           Text="Click to Change" HorizontalAlignment="Center" 
+                           VerticalAlignment="Bottom" Grid.RowSpan="2" FontFamily="Papyrus" FontSize="13" 
+                           FontWeight="Bold" />-->
+                <!--<TextBlock Grid.Column="0" Text="{Binding ElementName=tbkClick, Path=Text}" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Bottom" Foreground="White"
+                           Grid.RowSpan="2" FontWeight="Bold" FontFamily="Papyrus" 
+                           FontSize="13" />-->
+                <TextBox Name="tbx1" Grid.Column="1" Margin="10,30" FontFamily="Papyrus" FontSize="22" Text="Player 1" />
+                <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0" Orientation="Horizontal">
+                    <RadioButton Name="rbtGreen1" Checked="rbt1_Checked"  VerticalAlignment="Center" Margin="10,0" Background="Green" Style="{StaticResource rbtColorSquare}" />
+                    <RadioButton Name="rbtBlue1" Checked="rbt1_Checked" VerticalAlignment="Center" Margin="10,0" Background="Blue" Style="{StaticResource rbtColorSquare}" />
+                    <RadioButton Name="rbtRed1" Checked="rbt1_Checked" VerticalAlignment="Center" Margin="10,0" Background="Red" Style="{StaticResource rbtColorSquare}" />
+                    <RadioButton Name="rbtPurple1" Checked="rbt1_Checked" VerticalAlignment="Center" Margin="10,0" Background="Purple" Style="{StaticResource rbtColorSquare}"/>
+                </StackPanel>
+                
+            </Grid>
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <!--<TextBlock Grid.Column="0" Margin="1,0,0,-1" 
+                           Text="{Binding ElementName=tbkClick, Path=Text}" HorizontalAlignment="Center" 
+                           VerticalAlignment="Bottom" Grid.RowSpan="2" FontFamily="Papyrus" FontSize="13" FontWeight="Bold" />-->
+                <!--<TextBlock Grid.Column="0" Text="{Binding ElementName=tbkClick, Path=Text}" HorizontalAlignment="Center" 
+                           VerticalAlignment="Bottom" Foreground="White"
+                           Grid.RowSpan="2" FontFamily="Papyrus" FontSize="13" FontWeight="Bold" />-->
+                <TextBox Name="tbx2" Grid.Column="1" Margin="10,30" FontFamily="Papyrus"
+                         FontSize="22" Text="Player 2" />
+                <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0" Orientation="Horizontal">
+                    <RadioButton Name="rbtGreen2" Checked="rbt2_Checked" VerticalAlignment="Center" Margin="10,0" Background="Green" Style="{StaticResource rbtColorSquare}" />
+                    <RadioButton Name="rbtBlue2" Checked="rbt2_Checked" VerticalAlignment="Center" Margin="10,0" Background="Blue" Style="{StaticResource rbtColorSquare}" />
+                    <RadioButton Name="rbtRed2" Checked="rbt2_Checked" VerticalAlignment="Center" Margin="10,0" Background="Red" Style="{StaticResource rbtColorSquare}" />
+                    <RadioButton Name="rbtPurple2" Checked="rbt2_Checked" VerticalAlignment="Center" Margin="10,0" Background="Purple" Style="{StaticResource rbtColorSquare}"/>
+                </StackPanel>
+                
+            </Grid>
+            <Button Content="Begin" FontFamily="Papyrus" 
+                    HorizontalAlignment="Center" Padding="5" 
+                    Margin="0,0,0,10" Click="Button_Click" 
+                    FontWeight="Bold" Foreground="Black"/>
+        </StackPanel>
+    </Grid>
+    <Window.Background>
+        <ImageBrush ImageSource="/Dawn%20of%20History;component/ICO.ico" />
+    </Window.Background>
+</Window>

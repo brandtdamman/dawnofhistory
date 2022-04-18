@@ -130,3 +130,5 @@ dmypy.json
 /.vs
 /src/DawnOfHistory/.vs/DawnOfHistory/v17
 /src/DawnOfHistory/DawnOfHistory/obj
+/src/Old_DawnOfHistory/Dawn_of_History/Dawn_of_History/bin
+/src/Old_DawnOfHistory/Dawn_of_History/Dawn_of_History/obj/x86
