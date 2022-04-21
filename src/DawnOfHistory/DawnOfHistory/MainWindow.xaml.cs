@@ -24,5 +24,17 @@ namespace DawnOfHistory
         {
             InitializeComponent();
         }
+
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Button b = (Button)sender;
+            b.Content = "HOVERED";
+        }
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Button b = (Button)sender;
+            b.Content = "AWAY";
+        }
     }
 }
